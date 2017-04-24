@@ -31,6 +31,9 @@
     <ClCompile Include="MintChocolateStudio.cpp">
       <Filter>D3MCS</Filter>
     </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
@@ -59,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="MintChocolateStudio.h">
       <Filter>D3MCS</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>D3MCS\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,8 +9,6 @@
 #define _CLASS_D3MCS_UI_UIELEMENT_H
 
 #include <cstdint>
-#include <initializer_list>
-#include <utility>
 
 namespace D3MCS::UI
 {
@@ -33,13 +31,13 @@ namespace D3MCS::UI
 		
 	public:
 		inline int32_t x() const;
-		inline void x(int32_t nNewX);
+		inline int32_t &x();
 		inline int32_t y() const;
-		inline void y(int32_t nNewY);
+		inline int32_t &y();
 		inline uint32_t width() const;
-		inline void width(uint32_t nNewWidth);
+		inline uint32_t &width();
 		inline uint32_t height() const;
-		inline void height(uint32_t nNewHeight);
+		inline uint32_t &height();
 		inline bool isFocused() const;
 		inline void takeFocuse();
 
@@ -48,14 +46,14 @@ namespace D3MCS::UI
 		virtual void onFocusOff();
 		virtual void onMouseEnter();
 		virtual void onMouseLeave();
-		virtual void onMouseMove();
-		virtual void onMouseDown();
-		virtual void onMouseUp();
-		virtual void onMouseWheel();
-		virtual void onKeyDown();
-		virtual void onKeyUp();
-		virtual void onKeyTyping();
-		virtual void onKeyTyped();
+		virtual void onMouseMove(int32_t nX, int32_t nY);
+		virtual void onMouseDown(int32_t nKeyCode);
+		virtual void onMouseUp(int32_t nKeyCode);
+		virtual void onMouseWheel(int32_t nDelta);
+		virtual void onKeyDown(int32_t nKeyCode);
+		virtual void onKeyUp(int32_t nKeyCode);
+		virtual void onKeyTyping(wchar_t nCompositionCharacter);
+		virtual void onKeyTyped(wchar_t nResultCharacter);
 	};
 
 	inline int32_t UIElement::x() const
@@ -63,9 +61,9 @@ namespace D3MCS::UI
 		return this->nX;
 	}
 
-	inline void UIElement::x(int32_t nNewX)
+	inline int32_t &UIElement::x()
 	{
-		this->nX = nNewX;
+		return this->nX;
 	}
 
 	inline int32_t UIElement::y() const
@@ -73,9 +71,9 @@ namespace D3MCS::UI
 		return this->nY;
 	}
 
-	inline void UIElement::y(int32_t nNewY)
+	inline int32_t &UIElement::y()
 	{
-		this->nY = nNewY;
+		return this->nY;
 	}
 
 	inline uint32_t UIElement::width() const
@@ -83,9 +81,9 @@ namespace D3MCS::UI
 		return this->nWidth;
 	}
 
-	inline void UIElement::width(uint32_t nNewWidth)
+	inline uint32_t &UIElement::width()
 	{
-		this->nWidth = nNewWidth;
+		return this->nWidth;
 	}
 
 	inline uint32_t UIElement::height() const
@@ -93,9 +91,9 @@ namespace D3MCS::UI
 		return this->nHeight;
 	}
 
-	inline void UIElement::height(uint32_t nNewHeight)
+	inline uint32_t &UIElement::height()
 	{
-		this->nHeight = nNewHeight;
+		return this->nHeight;
 	}
 
 	inline bool UIElement::isFocused() const

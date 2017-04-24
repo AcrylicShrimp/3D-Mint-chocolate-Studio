@@ -23,6 +23,9 @@ namespace D3MCS
 		//Make current.
 		UI::FrameManager::instance().frame().linkCurrentThread();
 
+		//Init GLEW.
+		glewInit();
+
 		//Make the frame visible.
 		UI::FrameManager::instance().frame().setVisible(true);
 	}

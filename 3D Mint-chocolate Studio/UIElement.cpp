@@ -46,4 +46,64 @@ namespace D3MCS::UI
 		
 		return *this;
 	}
+
+	void UIElement::onFocusOn()
+	{
+		//Empty.
+	}
+
+	void UIElement::onFocusOff()
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseEnter()
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseLeave()
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseMove(int32_t nX, int32_t nY)
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseDown(int32_t nKeyCode)
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseUp(int32_t nKeyCode)
+	{
+		//Empty.
+	}
+
+	void UIElement::onMouseWheel(int32_t nDelta)
+	{
+		//Empty.
+	}
+
+	void UIElement::onKeyDown(int32_t nKeyCode)
+	{
+		//Empty.
+	}
+
+	void UIElement::onKeyUp(int32_t nKeyCode)
+	{
+		//Empty.
+	}
+
+	void UIElement::onKeyTyping(wchar_t nCompositionCharacter)
+	{
+		//Empty.
+	}
+
+	void UIElement::onKeyTyped(wchar_t nResultCharacter)
+	{
+		//Empty.
+	}
 }

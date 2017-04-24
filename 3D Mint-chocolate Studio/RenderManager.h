@@ -14,7 +14,7 @@
 #include "WindowMessageProcedure.h"
 
 #include <Windows.h>
-#include <GL\GL.h>
+#include <GL\glew.h>
 
 namespace D3MCS::UI
 {
