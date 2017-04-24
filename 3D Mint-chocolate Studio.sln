@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3D Mint-chocolate Studio", "3D Mint-chocolate Studio\3D Mint-chocolate Studio.vcxproj", "{CED43F04-AEC8-4E20-B6DE-AC7651880313}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70CD2EF2-0AD3-47FF-B778-267B9984E8C4} = {70CD2EF2-0AD3-47FF-B778-267B9984E8C4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLEW", "GLEW\GLEW.vcxproj", "{70CD2EF2-0AD3-47FF-B778-267B9984E8C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CED43F04-AEC8-4E20-B6DE-AC7651880313}.Debug|x86.ActiveCfg = Debug|Win32
+		{CED43F04-AEC8-4E20-B6DE-AC7651880313}.Debug|x86.Build.0 = Debug|Win32
+		{CED43F04-AEC8-4E20-B6DE-AC7651880313}.Debug|x86.Deploy.0 = Debug|Win32
+		{CED43F04-AEC8-4E20-B6DE-AC7651880313}.Release|x86.ActiveCfg = Release|Win32
+		{CED43F04-AEC8-4E20-B6DE-AC7651880313}.Release|x86.Build.0 = Release|Win32
+		{70CD2EF2-0AD3-47FF-B778-267B9984E8C4}.Debug|x86.ActiveCfg = Debug|Win32
+		{70CD2EF2-0AD3-47FF-B778-267B9984E8C4}.Debug|x86.Build.0 = Debug|Win32
+		{70CD2EF2-0AD3-47FF-B778-267B9984E8C4}.Release|x86.ActiveCfg = Release|Win32
+		{70CD2EF2-0AD3-47FF-B778-267B9984E8C4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="D3MCS">
+      <UniqueIdentifier>{d9808c19-a8ad-4bbe-a153-533c41c743c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3MCS\UI">
+      <UniqueIdentifier>{9c2a6b3f-7096-4130-ad07-4c90047ce778}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Run.cpp" />
+    <ClCompile Include="Frame.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowMessageProcedure.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameManager.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MintChocolateStudio.cpp">
+      <Filter>D3MCS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Frame.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowMessageProcedure.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameManager.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerBase.h">
+      <Filter>D3MCS</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerBase.hpp">
+      <Filter>D3MCS</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MintChocolateStudio.h">
+      <Filter>D3MCS</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
