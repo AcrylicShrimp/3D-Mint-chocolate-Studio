@@ -107,7 +107,7 @@ namespace D3MCS::UI
 
 	inline bool Frame::linkCurrentThread() const
 	{
-		return wglMakeCurrent(this->hDeviceContext, this->hRenderingContext);
+		return wglMakeCurrent(this->hDeviceContext, this->hRenderingContext) != 0;
 	}
 
 	inline void Frame::unlinkCurrentThread() const

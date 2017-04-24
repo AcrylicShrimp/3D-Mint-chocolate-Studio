@@ -13,20 +13,13 @@ int32_t APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpC
 {
 	D3MCS::MintChocolateStudio::initialize();
 
-	for (MSG sMsg;;)
+	for (MSG sMsg; GetMessage(&sMsg, nullptr, 0u, 0u);)
 	{
-		if (PeekMessage(&sMsg, nullptr, 0u, 0u, PM_REMOVE))
-		{
-			if (sMsg.message == WM_QUIT)
-				break;
+		if (sMsg.message == WM_QUIT)
+			break;
 
-			TranslateMessage(&sMsg);
-			DispatchMessage(&sMsg);
-
-			continue;
-		}
-
-		D3MCS::MintChocolateStudio::process();
+		TranslateMessage(&sMsg);
+		DispatchMessage(&sMsg);
 	}
 
 	D3MCS::MintChocolateStudio::finalize();

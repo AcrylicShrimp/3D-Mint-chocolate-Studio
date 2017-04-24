@@ -33,9 +33,4 @@ namespace D3MCS
 		UI::InputManager::finalize();
 		UI::FrameManager::finalize();
 	}
-
-	void MintChocolateStudio::process()
-	{
-		
-	}
 }

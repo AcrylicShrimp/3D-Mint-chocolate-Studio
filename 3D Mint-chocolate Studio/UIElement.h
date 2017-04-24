@@ -9,6 +9,7 @@
 #define _CLASS_D3MCS_UI_UIELEMENT_H
 
 #include <cstdint>
+#include <initializer_list>
 #include <utility>
 
 namespace D3MCS::UI
@@ -25,12 +26,10 @@ namespace D3MCS::UI
 	public:
 		UIElement(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight);
 		UIElement(const UIElement &sSrc);
-		UIElement(UIElement &&sSrc);
 		virtual ~UIElement();
 		
 	public:
 		UIElement &operator=(const UIElement &sSrc);
-		UIElement &operator=(UIElement &&sSrc);
 		
 	public:
 		inline int32_t x() const;
@@ -45,6 +44,18 @@ namespace D3MCS::UI
 		inline void takeFocuse();
 
 		virtual void render() = 0;
+		virtual void onFocusOn();
+		virtual void onFocusOff();
+		virtual void onMouseEnter();
+		virtual void onMouseLeave();
+		virtual void onMouseMove();
+		virtual void onMouseDown();
+		virtual void onMouseUp();
+		virtual void onMouseWheel();
+		virtual void onKeyDown();
+		virtual void onKeyUp();
+		virtual void onKeyTyping();
+		virtual void onKeyTyped();
 	};
 
 	inline int32_t UIElement::x() const

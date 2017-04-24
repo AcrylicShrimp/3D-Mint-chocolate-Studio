@@ -18,59 +18,32 @@ namespace D3MCS::UI
 	{
 		//Empty.
 	}
-	
-	UIElement::UIElement(const UIElement &sSrc)
+
+	UIElement::UIElement(const UIElement &sSrc) :
+		nX{sSrc.nX},
+		nY{sSrc.nY},
+		nWidth{sSrc.nWidth},
+		nHeight{sSrc.nHeight}
 	{
-		//TODO : Place your implementation of copy constructor here.
-		
-	}
-	
-	UIElement::UIElement(UIElement &&sSrc)
-	{
-		//TODO : Place your implementation of move constructor here.
-		
+		//Empty.
 	}
 	
 	UIElement::~UIElement()
 	{
-		//TODO : Place your implementation of destructor here.
-		
+		if (UIElement::pFocusedElement == this)
+			UIElement::pFocusedElement = nullptr;
 	}
-	
-	/*
-		TODO : Place your other constructors here.
-	*/
-	
 	
 	UIElement &UIElement::operator=(const UIElement &sSrc)
 	{
 		if(&sSrc == this)
 			return *this;
 		
-		//TODO : Place your implementation of copy assignment operator here.
-		
-		
-		return *this;
-	}
-	
-	UIElement &UIElement::operator=(UIElement &&sSrc)
-	{
-		if(&sSrc == this)
-			return *this;
-		
-		//TODO : Place your implementation of move assignment operator here.
-		
+		this->nX = sSrc.nX;
+		this->nY = sSrc.nY;
+		this->nWidth = sSrc.nWidth;
+		this->nHeight = sSrc.nHeight;
 		
 		return *this;
 	}
-	
-	/*
-		TODO : Place your other operator overloadings here.
-	*/
-	
-	
-	/*
-		TODO : Place your member function definitions here.
-	*/
-
 }

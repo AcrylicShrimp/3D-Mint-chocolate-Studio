@@ -33,7 +33,6 @@ namespace D3MCS
 	public:
 		static void initialize();
 		static void finalize();
-		static void process();
 	};
 }
 
