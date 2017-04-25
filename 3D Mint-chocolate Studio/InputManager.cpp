@@ -15,8 +15,8 @@ namespace D3MCS::UI
 	{
 		memset(this->vKeyState, 0, sizeof(this->vKeyState));
 	}
-
-	LRESULT CALLBACK InputManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
+	
+	LRESULT InputManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
 	{
 		if (hWindow != FrameManager::instance().frame().windowHandle())
 			return 0;

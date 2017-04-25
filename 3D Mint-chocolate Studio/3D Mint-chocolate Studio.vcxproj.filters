@@ -34,6 +34,9 @@
     <ClCompile Include="UIButton.cpp">
       <Filter>D3MCS\UI</Filter>
     </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
@@ -64,6 +67,12 @@
       <Filter>D3MCS</Filter>
     </ClInclude>
     <ClInclude Include="UIButton.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.hpp">
       <Filter>D3MCS\UI</Filter>
     </ClInclude>
   </ItemGroup>

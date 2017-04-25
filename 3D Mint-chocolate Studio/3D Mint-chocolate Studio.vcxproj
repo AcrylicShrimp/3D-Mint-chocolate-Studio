@@ -148,6 +148,7 @@
     <ClCompile Include="Run.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="WindowMessageProcedure.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,8 @@
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIElement.h" />
+    <ClInclude Include="UIManager.h" />
+    <ClInclude Include="UIManager.hpp" />
     <ClInclude Include="WindowMessageProcedure.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

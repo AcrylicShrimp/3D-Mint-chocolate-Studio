@@ -26,7 +26,7 @@ namespace D3MCS::UI
 		SwapBuffers(FrameManager::instance().frame().deviceContext());
 	}
 	
-	LRESULT CALLBACK RenderManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
+	LRESULT RenderManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
 	{
 		if (hWindow != FrameManager::instance().frame().windowHandle())
 			return 0;

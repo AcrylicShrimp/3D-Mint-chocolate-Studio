@@ -28,7 +28,7 @@ namespace D3MCS::UI
 		this->sFrame.destroyFrame();
 	}
 
-	LRESULT CALLBACK FrameManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
+	LRESULT FrameManager::handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam)
 	{
 		if (hWindow != this->sFrame.windowHandle())
 			return 0;

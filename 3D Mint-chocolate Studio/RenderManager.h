@@ -35,7 +35,7 @@ namespace D3MCS::UI
 		
 	public:
 		void render();
-		virtual LRESULT CALLBACK handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
+		virtual LRESULT handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
 	};
 }
 

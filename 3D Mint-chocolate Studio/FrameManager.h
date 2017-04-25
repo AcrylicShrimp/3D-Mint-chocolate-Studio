@@ -51,7 +51,7 @@ namespace D3MCS::UI
 
 		bool createFrame(int32_t nX, int32_t nY, uint32_t nWidth, uint32_t nHeight, uint32_t nColorBit, uint32_t nDepthBit, bool bFullscreen, const std::wstring &sClassName, const std::wstring &sTitleText, HICON hIcon);
 		void destroyFrame();
-		virtual LRESULT CALLBACK handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
+		virtual LRESULT handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
 	};
 
 	inline Frame &FrameManager::frame()

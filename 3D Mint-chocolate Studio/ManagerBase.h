@@ -13,7 +13,7 @@
 
 namespace D3MCS
 {
-	template <class ManagerType> class ManagerBase
+	template<class ManagerType> class ManagerBase
 	{
 	private:
 		static ManagerType *pInstance;
@@ -31,11 +31,11 @@ namespace D3MCS
 	public:
 		inline static ManagerType &instance();
 
-		template <class ...ContructorParameter> static void initialize(ContructorParameter &&...sConstructorParam);
+		template<class ...ContructorParameter> static void initialize(ContructorParameter &&...sConstructorParam);
 		static void finalize();
 	};
 
-	template <class ManagerType> inline ManagerType &ManagerBase<ManagerType>::instance()
+	template<class ManagerType> inline ManagerType &ManagerBase<ManagerType>::instance()
 	{
 		assert(ManagerBase<ManagerType>::pInstance);
 

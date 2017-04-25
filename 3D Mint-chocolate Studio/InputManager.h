@@ -45,7 +45,7 @@ namespace D3MCS::UI
 		inline int32_t mouseY() const;
 		inline bool keyState(uint8_t nIndex) const;
 
-		virtual LRESULT CALLBACK handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
+		virtual LRESULT handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) override;
 	};
 
 	inline int32_t InputManager::mouseX() const

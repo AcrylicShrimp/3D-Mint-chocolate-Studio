@@ -39,7 +39,7 @@ namespace D3MCS::UI
 		inline const std::initializer_list<UINT> &messageList() const;
 		
 		static LRESULT CALLBACK processWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam);
-		virtual LRESULT CALLBACK handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) = 0;
+		virtual LRESULT handleWindowMessage(HWND hWindow, UINT nMessage, WPARAM wParam, LPARAM lParam) = 0;
 	};
 
 	inline const std::initializer_list<UINT> &WindowMessageProcedure::messageList() const

@@ -23,18 +23,16 @@ namespace D3MCS::UI
 	private:
 		bool bIsEntered;
 		bool bIsPressed;
-		float nFontSize;
-		std::wstring sLabel;
 		
 	public:
 		UIButton(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight, float nFontSize, const std::wstring &sNewLabel);
 		UIButton(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight, float nFontSize, std::wstring &&sNewLabel);
-		UIButton(const UIButton &sSrc);
+		UIButton(const UIButton &sSrc) = delete;
 		UIButton(UIButton &&sSrc);
 		~UIButton();
 		
 	public:
-		UIButton &operator=(const UIButton &sSrc);
+		UIButton &operator=(const UIButton &sSrc) = delete;
 		UIButton &operator=(UIButton &&sSrc);
 		
 	public:
@@ -54,16 +52,6 @@ namespace D3MCS::UI
 	inline bool UIButton::isPressed() const
 	{
 		return this->bIsPressed;
-	}
-
-	inline const std::wstring &UIButton::label() const
-	{
-		return this->sLabel;
-	}
-
-	inline std::wstring &UIButton::label()
-	{
-		return this->sLabel;
 	}
 }
 
