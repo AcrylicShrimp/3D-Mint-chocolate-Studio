@@ -142,10 +142,12 @@
   <ItemGroup>
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="FrameManager.cpp" />
+    <ClCompile Include="GlyphManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MintChocolateStudio.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Run.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="UIManager.cpp" />
@@ -154,11 +156,13 @@
   <ItemGroup>
     <ClInclude Include="Frame.h" />
     <ClInclude Include="FrameManager.h" />
+    <ClInclude Include="GlyphManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ManagerBase.h" />
     <ClInclude Include="ManagerBase.hpp" />
     <ClInclude Include="MintChocolateStudio.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIManager.h" />

@@ -10,6 +10,7 @@ namespace D3MCS::UI
 {
 	UIElement *UIElement::pEnteredElement{nullptr};
 	UIElement *UIElement::pFocusedElement{nullptr};
+	UIElement UIElement::sRootElement{0, 0, 0u, 0u};
 
 	UIElement::UIElement(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight) :
 		nX{nNewX},
@@ -20,7 +21,7 @@ namespace D3MCS::UI
 		bEnabled{true},
 		pParent{nullptr}
 	{
-		//Empty.
+		UIElement::sRootElement.addChild(this);
 	}
 
 	UIElement::UIElement(UIElement &&sSrc) :
@@ -33,11 +34,12 @@ namespace D3MCS::UI
 		pParent{nullptr},
 		sChildList{std::move(sSrc.sChildList)}
 	{
-		if (sSrc.pParent)
-		{
-			sSrc.pParent->addChild(this);
-			sSrc.pParent->removeChild(&sSrc);
-		}
+		auto nIndex = sSrc.calcChildIndex();
+
+		sSrc.pParent->addChild(this);
+		sSrc.pParent->removeChild(&sSrc);
+
+		this->moveUpper(nIndex);
 
 		for (auto pChild : this->sChildList)
 			pChild->pParent = this;
@@ -57,14 +59,14 @@ namespace D3MCS::UI
 		if (&sSrc == this)
 			return *this;
 
-		if (this->pParent)
-			this->pParent->removeChild(this);
+		this->pParent->removeChild(this);
 
-		if (sSrc.pParent)
-		{
-			sSrc.pParent->addChild(this);
-			sSrc.pParent->removeChild(&sSrc);
-		}
+		auto nIndex = sSrc.calcChildIndex();
+
+		sSrc.pParent->addChild(this);
+		sSrc.pParent->removeChild(&sSrc);
+
+		this->moveUpper(nIndex);
 
 		this->nX = sSrc.nX;
 		this->nY = sSrc.nY;
@@ -78,11 +80,6 @@ namespace D3MCS::UI
 			pChild->pParent = this;
 
 		return *this;
-	}
-
-	void UIElement::renderAll()
-	{
-
 	}
 
 	LRESULT UIElement::handleWindowMessage(UINT nMessage, WPARAM wParam, LPARAM lParam)
@@ -102,11 +99,14 @@ namespace D3MCS::UI
 
 	void UIElement::addChild(UIElement *pNewChild)
 	{
+		if (pNewChild == this)
+			return;
+
 		for (auto pChild : this->sChildList)
 			if (pChild == pNewChild)
 				return;
 
-		this->sChildList.emplace_back(pNewChild);
+		this->sChildList.insert(this->sChildList.cbegin(), pNewChild);
 
 		if (pNewChild->pParent)
 			pNewChild->pParent->removeChild(pNewChild);
@@ -116,11 +116,15 @@ namespace D3MCS::UI
 
 	void UIElement::removeChild(UIElement *pNewChild)
 	{
+		if (pNewChild == this)
+			return;
+
 		for (auto iIndex = this->sChildList.begin(), iEnd = this->sChildList.end(); iIndex != iEnd; ++iIndex)
 			if (*iIndex == pNewChild)
 			{
 				(*iIndex)->pParent = nullptr;
 				this->sChildList.erase(iIndex);
+				UIElement::sRootElement.addChild(pNewChild);
 
 				return;
 			}
@@ -128,9 +132,6 @@ namespace D3MCS::UI
 
 	void UIElement::moveUpper(uint32_t nCount)
 	{
-		if (!this->pParent)
-			return;
-
 		auto nIndex{0u};
 		for (; this->pParent->sChildList[nIndex] != this; ++nIndex);
 
@@ -144,9 +145,6 @@ namespace D3MCS::UI
 
 	void UIElement::moveUpperMost()
 	{
-		if (!this->pParent)
-			return;
-
 		auto iIndex{this->pParent->sChildList.cbegin()};
 		for (; (*iIndex) != this; ++iIndex);
 
@@ -156,9 +154,6 @@ namespace D3MCS::UI
 
 	void UIElement::moveLower(uint32_t nCount)
 	{
-		if (!this->pParent)
-			return;
-
 		auto nIndex{0u};
 		for (; this->pParent->sChildList[nIndex] != this; ++nIndex);
 
@@ -172,9 +167,6 @@ namespace D3MCS::UI
 
 	void UIElement::moveLowerMost()
 	{
-		if (!this->pParent)
-			return;
-
 		auto iIndex{this->pParent->sChildList.cbegin()};
 		for (; (*iIndex) != this; ++iIndex);
 
@@ -182,13 +174,14 @@ namespace D3MCS::UI
 		this->sChildList.insert(this->sChildList.cbegin(), this);
 	}
 
+	uint32_t UIElement::calcChildIndex()
+	{
+
+	}
+
 	void UIElement::render()
 	{
-		if (this->bHided)
-			return;
-
-		for (auto pChild : this->sChildList)
-			pChild->render();
+		//Empty.
 	}
 
 	void UIElement::onFocusOn()

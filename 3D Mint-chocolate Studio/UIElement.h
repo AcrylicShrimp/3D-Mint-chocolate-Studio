@@ -20,6 +20,7 @@ namespace D3MCS::UI
 	protected:
 		static UIElement *pEnteredElement;
 		static UIElement *pFocusedElement;
+		static UIElement sRootElement;
 		int32_t nX;
 		int32_t nY;
 		uint32_t nWidth;
@@ -40,6 +41,7 @@ namespace D3MCS::UI
 		UIElement &operator=(UIElement &&sSrc);
 		
 	public:
+		inline static UIElement *rootElement();
 		inline int32_t x() const;
 		inline int32_t &x();
 		inline int32_t y() const;
@@ -53,10 +55,11 @@ namespace D3MCS::UI
 		inline bool &isEnabled();
 		inline bool isEnabled() const;
 		inline bool isFocused() const;
+		inline UIElement *parent() const;
+		inline const std::vector<UIElement *> &child() const;
 		inline void takeFocus();
 		inline bool checkCollide(int32_t nPointX, int32_t nPointY) const;
 
-		static void renderAll();
 		static LRESULT handleWindowMessage(UINT nMessage, WPARAM wParam, LPARAM lParam);
 		void addChild(UIElement *pNewChild);
 		void removeChild(UIElement *pNewChild);
@@ -64,6 +67,7 @@ namespace D3MCS::UI
 		void moveUpperMost();
 		void moveLower(uint32_t nCount = 1u);
 		void moveLowerMost();
+		uint32_t calcChildIndex();
 		virtual void render();
 		virtual void onFocusOn();
 		virtual void onFocusOff();
@@ -78,6 +82,11 @@ namespace D3MCS::UI
 		virtual void onKeyTyping(wchar_t nCompositionCharacter);
 		virtual void onKeyTyped(wchar_t nResultCharacter);
 	};
+
+	inline UIElement *UIElement::rootElement()
+	{
+		return &UIElement::sRootElement;
+	}
 
 	inline int32_t UIElement::x() const
 	{
@@ -142,6 +151,16 @@ namespace D3MCS::UI
 	inline bool UIElement::isFocused() const
 	{
 		return UIElement::pFocusedElement == this;
+	}
+
+	inline UIElement *UIElement::parent() const
+	{
+		return this->pParent;
+	}
+
+	inline const std::vector<UIElement *> &UIElement::child() const
+	{
+		return this->sChildList;
 	}
 
 	inline void UIElement::takeFocus()

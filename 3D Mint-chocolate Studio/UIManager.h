@@ -14,8 +14,10 @@
 #include "UIElement.h"
 #include "WindowMessageProcedure.h"
 
+#include <deque>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <Windows.h>
 
@@ -43,7 +45,8 @@ namespace D3MCS::UI
 		template<class UIType> inline UIType *findUIElementByName(const std::wstring &sName);
 		template<class UIType> inline const UIType *findUIElementByName(const std::wstring &sName) const;
 		template<class UIType, class ...ConstructorParameter> bool addUIElementByName(const std::wstring &sName, ConstructorParameter &&...sConstructorParameter);
-
+		
+		void renderAll();
 		void clearUIElement();
 		void removeUIElementByName(const std::wstring &sName);
 		UIElement *findUIElementByName(const std::wstring &sName);

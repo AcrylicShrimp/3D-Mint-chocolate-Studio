@@ -7,6 +7,9 @@
     <Filter Include="D3MCS\UI">
       <UniqueIdentifier>{9c2a6b3f-7096-4130-ad07-4c90047ce778}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3MCS\Render">
+      <UniqueIdentifier>{00f7c0a0-b86a-42e4-99a8-6910d19314a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Run.cpp" />
@@ -36,6 +39,12 @@
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GlyphManager.cpp">
+      <Filter>D3MCS\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>D3MCS\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +83,12 @@
     </ClInclude>
     <ClInclude Include="UIManager.hpp">
       <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GlyphManager.h">
+      <Filter>D3MCS\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>D3MCS\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

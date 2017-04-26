@@ -14,6 +14,28 @@ namespace D3MCS::UI
 		//Empty.
 	}
 
+	void UIManager::renderAll()
+	{
+		std::deque<UIElement *> sRenderQueue;
+
+		//Reverse!
+		for (auto pChild : UIElement::rootElement()->child())
+			sRenderQueue.emplace_front(pChild);
+
+		while (!sRenderQueue.empty())
+		{
+			auto pNext = sRenderQueue.front();
+			sRenderQueue.pop_front();
+
+			pNext->render();
+
+			//Reverse!
+			auto &sChildList = pNext->child();
+			for (auto iIndex = sChildList.rbegin(), iEnd = sChildList.rend(); iIndex != iEnd; ++iIndex)
+				sRenderQueue.emplace_back(*iIndex);
+		}
+	}
+
 	void UIManager::clearUIElement()
 	{
 		for (auto pUIElement : this->sUIElementMap)
