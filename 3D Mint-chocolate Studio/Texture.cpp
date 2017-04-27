@@ -37,4 +37,22 @@ namespace D3MCS::Render
 
 		return *this;
 	}
+
+	void Texture::setMinFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const
+	{
+		switch (eMipmapFilter)
+		{
+		case MipmapFilter::None:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(eTexelFilter));
+			return;
+		case MipmapFilter::Linear:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR);
+			return;
+		case MipmapFilter::Nearest:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST);
+			return;
+		default:
+			return;
+		}
+	}
 }

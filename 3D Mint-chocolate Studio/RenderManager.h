@@ -18,7 +18,7 @@
 
 namespace D3MCS::UI
 {
-	class RenderManager final : public ManagerBase<RenderManager>, WindowMessageProcedure
+	class RenderManager final : public ManagerBase<RenderManager>, public WindowMessageProcedure
 	{
 	public:
 		friend ManagerBase<RenderManager>;

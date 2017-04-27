@@ -46,6 +46,12 @@
     <ClCompile Include="Texture.cpp">
       <Filter>D3MCS\Render</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGLManager.cpp">
+      <Filter>D3MCS\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoBuffer.cpp">
+      <Filter>D3MCS\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
@@ -88,6 +94,12 @@
       <Filter>D3MCS\UI</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
+      <Filter>D3MCS\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLManager.h">
+      <Filter>D3MCS\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoBuffer.h">
       <Filter>D3MCS\Render</Filter>
     </ClInclude>
   </ItemGroup>

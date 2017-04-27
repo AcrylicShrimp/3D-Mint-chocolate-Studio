@@ -13,6 +13,8 @@ namespace D3MCS
 		//Initialize all manager;
 		UI::FrameManager::initialize();
 		UI::InputManager::initialize();
+		Render::OpenGLManager::initialize();
+
 		UI::RenderManager::initialize();
 
 		//Create the main frame.
@@ -23,9 +25,6 @@ namespace D3MCS
 		//Make current.
 		UI::FrameManager::instance().frame().linkCurrentThread();
 
-		//Init GLEW.
-		glewInit();
-
 		//Make the frame visible.
 		UI::FrameManager::instance().frame().setVisible(true);
 	}
@@ -33,6 +32,7 @@ namespace D3MCS
 	void MintChocolateStudio::finalize()
 	{
 		UI::RenderManager::finalize();
+		Render::OpenGLManager::finalize();
 		UI::InputManager::finalize();
 		UI::FrameManager::finalize();
 	}

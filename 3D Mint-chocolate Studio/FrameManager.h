@@ -19,7 +19,7 @@
 
 namespace D3MCS::UI
 {
-	class FrameManager final : public ManagerBase<FrameManager>, WindowMessageProcedure
+	class FrameManager final : public ManagerBase<FrameManager>, public WindowMessageProcedure
 	{
 	public:
 		friend ManagerBase<FrameManager>;

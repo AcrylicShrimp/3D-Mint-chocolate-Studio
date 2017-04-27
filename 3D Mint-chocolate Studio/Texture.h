@@ -8,26 +8,30 @@
 
 #define _CLASS_D3MCS_RENDER_TEXTURE_H
 
+#include "OpenGLManager.h"
+
+#include <algorithm>
+#include <cmath>
 #include <cstdint>
 #include <utility>
 #include <GL\glew.h>
 
 namespace D3MCS::Render
 {
-	enum class TexelFilter : int32_t
+	enum class TexelFilter : GLint
 	{
 		Linear = GL_LINEAR,
 		Nearest = GL_NEAREST
 	};
 
-	enum class MipmapFilter : int32_t
+	enum class MipmapFilter : GLint
 	{
 		None,
 		Linear,
 		Nearest
 	};
 
-	enum class WrappingMode : int32_t
+	enum class WrappingMode : GLint
 	{
 		Repeat = GL_REPEAT,
 		RepeatMirrored = GL_MIRRORED_REPEAT,
@@ -36,7 +40,7 @@ namespace D3MCS::Render
 		ClampEdgeMirrored = GL_MIRROR_CLAMP_TO_EDGE
 	};
 
-	enum class ExternalFormat : int32_t
+	enum class ExternalFormat : GLenum
 	{
 		R = GL_RED,
 		RG = GL_RG,
@@ -57,7 +61,7 @@ namespace D3MCS::Render
 		StencilIndex = GL_STENCIL_INDEX
 	};
 
-	enum class InternalFormat : int32_t
+	enum class InternalFormat : GLint
 	{
 		Depth = GL_DEPTH_COMPONENT,
 		DepthStencil = GL_DEPTH_STENCIL,
@@ -148,6 +152,29 @@ namespace D3MCS::Render
 		BPTCCompressedSRGBA = GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM
 	};
 
+	enum class TexelType : GLenum
+	{
+		Char = GL_BYTE,
+		Byte = GL_UNSIGNED_BYTE,
+		Byte332 = GL_UNSIGNED_BYTE_3_3_2,
+		ReversedByte233 = GL_UNSIGNED_BYTE_2_3_3_REV,
+		Short = GL_SHORT,
+		UnsignedShort = GL_UNSIGNED_SHORT,
+		UnsignedShort565 = GL_UNSIGNED_SHORT_5_6_5,
+		ReversedUnsignedShort565 = GL_UNSIGNED_SHORT_5_6_5_REV,
+		UnsignedShort4444 = GL_UNSIGNED_SHORT_4_4_4_4,
+		ReversedUnsignedShort4444 = GL_UNSIGNED_SHORT_4_4_4_4_REV,
+		UnsignedShort5551 = GL_UNSIGNED_SHORT_5_5_5_1,
+		ReversedUnsignedShort1555 = GL_UNSIGNED_SHORT_1_5_5_5_REV,
+		Int = GL_INT,
+		UnsignedInt = GL_UNSIGNED_INT,
+		UnsignedInt8888 = GL_UNSIGNED_INT_8_8_8_8,
+		ReversedUnsignedInt8888 = GL_UNSIGNED_INT_8_8_8_8_REV,
+		UnsignedInt1010102 = GL_UNSIGNED_INT_10_10_10_2,
+		ReversedUnsignedInt2101010 = GL_UNSIGNED_INT_2_10_10_10_REV,
+		Float = GL_FLOAT,
+	};
+
 	class Texture final
 	{
 	public:
@@ -172,14 +199,16 @@ namespace D3MCS::Render
 	public:
 		inline static void activeTextureSlot(GLenum nSlotID);
 		inline GLuint textureID() const;
-
-		void setFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const;
-		inline void setFilteringMode(TexelFilter eTexelFilter) const;
+		inline void setMagFilteringMode(TexelFilter eTexelFilter) const;
 		inline void setSWrappingMode(WrappingMode eWrappingMode) const;
 		inline void setTWrappingMode(WrappingMode eWrappingMode) const;
 		inline void setAnisotropicMode(float nAnisotropicMode) const;
 		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const;
-		inline void specifyTexel() const;
+		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
+		inline void updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
+		inline void updateMipmap();
+
+		void setMinFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const;
 	};
 
 	inline Texture::operator GLuint() const
@@ -195,6 +224,46 @@ namespace D3MCS::Render
 	inline GLuint Texture::textureID() const
 	{
 		return this->nTextureID;
+	}
+
+	inline void Texture::setMagFilteringMode(TexelFilter eTexelFilter) const
+	{
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(eTexelFilter));
+	}
+
+	inline void Texture::setSWrappingMode(WrappingMode eWrappingMode) const
+	{
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_S, static_cast<GLint>(eWrappingMode));
+	}
+
+	inline void Texture::setTWrappingMode(WrappingMode eWrappingMode) const
+	{
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_T, static_cast<GLint>(eWrappingMode));
+	}
+
+	inline void Texture::setAnisotropicMode(float nAnisotropicMode) const
+	{
+		glTextureParameterf(this->nTextureID, GL_TEXTURE_MAX_ANISOTROPY_EXT, fmin(nAnisotropicMode, OpenGLManager::instance().maxAnisotropic()));
+	}
+
+	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const
+	{
+		glTextureImage2DEXT(this->nTextureID, GL_TEXTURE_2D, 0, static_cast<GLint>(eInternalFormat), nWidth, nHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+	}
+
+	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const
+	{
+		glTextureImage2DEXT(this->nTextureID, GL_TEXTURE_2D, 0, static_cast<GLint>(eInternalFormat), nWidth, nHeight, 0, static_cast<GLenum>(eExternalFormat), static_cast<GLenum>(eTexelType), pTexel);
+	}
+
+	inline void Texture::updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const
+	{
+		glTextureSubImage2D(this->nTextureID, 0, nX, nY, nWidth, nHeight, static_cast<GLenum>(eExternalFormat), static_cast<GLenum>(eTexelType), pTexel);
+	}
+
+	inline void Texture::updateMipmap()
+	{
+		glGenerateTextureMipmap(this->nTextureID);
 	}
 }
 

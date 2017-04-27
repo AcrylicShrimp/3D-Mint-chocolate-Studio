@@ -10,7 +10,9 @@
 
 #include "Frame.h"
 #include "FrameManager.h"
+#include "GlyphManager.h"
 #include "InputManager.h"
+#include "OpenGLManager.h"
 #include "RenderManager.h"
 #include "WindowMessageProcedure.h"
 

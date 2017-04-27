@@ -23,7 +23,7 @@
 
 namespace D3MCS::UI
 {
-	class UIManager final : public ManagerBase<UIManager>, WindowMessageProcedure
+	class UIManager final : public ManagerBase<UIManager>, public WindowMessageProcedure
 	{
 	public:
 		friend ManagerBase<UIManager>;
@@ -37,7 +37,7 @@ namespace D3MCS::UI
 		UIManager(UIManager &&sSrc) = delete;
 		~UIManager() = default;
 		
-	public:
+	private:
 		UIManager &operator=(const UIManager &sSrc) = delete;
 		UIManager &operator=(UIManager &&sSrc) = delete;
 		

@@ -8,7 +8,13 @@
 
 #define _CLASS_D3MCS_UI_GLYPH_MANAGER_H
 
+#include "ManagerBase.h"
+#include "Texture.h"
+#include "WindowMessageProcedure.h"
+
+#include <cstddef>
 #include <cstdint>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -22,8 +28,16 @@ namespace D3MCS::UI
 	struct GlyphRenderState
 	{
 	public:
-		uint32_t nTextureIndex;
-
+		std::size_t nTextureIndex;
+		uint32_t nWidth;
+		uint32_t nHeight;
+		int32_t nBiasX;
+		int32_t nBiasY;
+		int32_t nAdvance;
+		float nFirstX;
+		float nFirstY;
+		float nSecondX;
+		float nSecondY;
 	};
 
 	struct GlyphState
@@ -34,40 +48,37 @@ namespace D3MCS::UI
 		uint32_t nLastX;
 		uint32_t nLastY;
 		bool bKerning;
-
+		std::vector<Render::Texture> sTextureList;
+		std::unordered_map<char32_t, GlyphRenderState> sGlyphRenderStateMap;
 	};
 
-	class GlyphManager
+	class GlyphManager : public ManagerBase<GlyphManager>, public WindowMessageProcedure
 	{
-	private:
-		/*
-			TODO : Place your field declarations here.
-		*/
-		
-		
 	public:
+		friend ManagerBase<GlyphManager>;
+		
+	private:
+		std::unordered_map<std::pair<std::string, int32_t>, std::pair<int32_t, GlyphState>> sGlyphStateMap;
+		
+	private:
 		GlyphManager();
 		GlyphManager(const GlyphManager &sSrc);
 		GlyphManager(GlyphManager &&sSrc);
 		~GlyphManager();
-		/*
-			TODO : Place your other constructors here.
-		*/
 		
-		
-	public:
+	private:
 		GlyphManager &operator=(const GlyphManager &sSrc);
 		GlyphManager &operator=(GlyphManager &&sSrc);
-		/*
-			TODO : Place your other operator overloadings here.
-		*/
-		
 		
 	public:
-		/*
-			TODO : Place your member function declarations here.
-		*/
-		
+		void clearPreparedCharacter();
+		void clearBakedTexture();
+		void rebakePreparedCharacter();
+		void clearPreparedGlyphState(const GlyphState *pGlyphState);
+		const GlyphState *prepareGlyphState(const wchar_t *pFacePath, uint32_t nFontSize);
+		const GlyphState *prepareCharacter(const GlyphState *pGlyphState, char32_t nCharacter);
+		const GlyphState *prepareString(const GlyphState *pGlyphState, const char32_t *pString);
+
 	};
 }
 

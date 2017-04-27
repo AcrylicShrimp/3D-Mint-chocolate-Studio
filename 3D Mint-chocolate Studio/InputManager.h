@@ -20,7 +20,7 @@
 
 namespace D3MCS::UI
 {
-	class InputManager final : public ManagerBase<InputManager>, WindowMessageProcedure
+	class InputManager final : public ManagerBase<InputManager>, public WindowMessageProcedure
 	{
 	public:
 		friend ManagerBase<InputManager>;
