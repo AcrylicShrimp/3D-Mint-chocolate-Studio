@@ -8,15 +8,17 @@
 
 #define _CLASS_D3MCS_UI_GLYPH_MANAGER_H
 
+#include "Container.h"
 #include "ManagerBase.h"
 #include "Texture.h"
-#include "WindowMessageProcedure.h"
+#include "VideoBuffer.h"
 
 #include <cstddef>
 #include <cstdint>
 #include <string>
 #include <utility>
 #include <vector>
+#include <Windows.h>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -52,25 +54,43 @@ namespace D3MCS::UI
 		std::unordered_map<char32_t, GlyphRenderState> sGlyphRenderStateMap;
 	};
 
-	class GlyphManager : public ManagerBase<GlyphManager>, public WindowMessageProcedure
+	using Font = const FT_FaceRec *;
+
+	class GlyphManager : public ManagerBase<GlyphManager>
 	{
 	public:
 		friend ManagerBase<GlyphManager>;
+		static constexpr Font NullFont = nullptr;
 		
 	private:
-		std::unordered_map<std::pair<std::string, int32_t>, std::pair<int32_t, GlyphState>> sGlyphStateMap;
+		Utility::Container<Render::ArrayBuffer> sPositionBuffer;
+		Utility::Container<Render::ArrayBuffer> sTexCoordBuffer;
+		FT_Library sFreetypeLibrary;
+		std::unordered_map<std::string, std::unordered_map<int32_t, std::pair<int32_t, GlyphState>>> sGlyphMap;
 		
 	private:
 		GlyphManager();
-		GlyphManager(const GlyphManager &sSrc);
-		GlyphManager(GlyphManager &&sSrc);
+		GlyphManager(const GlyphManager &sSrc) = delete;
+		GlyphManager(GlyphManager &&sSrc) = delete;
 		~GlyphManager();
 		
 	private:
-		GlyphManager &operator=(const GlyphManager &sSrc);
-		GlyphManager &operator=(GlyphManager &&sSrc);
+		GlyphManager &operator=(const GlyphManager &sSrc) = delete;
+		GlyphManager &operator=(GlyphManager &&sSrc) = delete;
 		
 	public:
+		Font loadFont(const std::wstring &sFontPath);
+		void unloadFont(Font &sFont, const std::wstring &sFontPath);
+		void unbakeFontAll();
+		void unbakeFont(Font sFont);
+		void bakeString(Font sFont, uint32_t nFontSize, char32_t nCharacter);
+		void bakeString(Font sFont, uint32_t nFontSize, const std::u32string &sString);
+		void generateVertex(Font sFont, uint32_t nFontSize, char32_t nCharacter);
+		void generateVertex(Font sFont, uint32_t nFontSize, const std::u32string &sString);
+		//
+
+
+
 		void clearPreparedCharacter();
 		void clearBakedTexture();
 		void rebakePreparedCharacter();
@@ -78,7 +98,6 @@ namespace D3MCS::UI
 		const GlyphState *prepareGlyphState(const wchar_t *pFacePath, uint32_t nFontSize);
 		const GlyphState *prepareCharacter(const GlyphState *pGlyphState, char32_t nCharacter);
 		const GlyphState *prepareString(const GlyphState *pGlyphState, const char32_t *pString);
-
 	};
 }
 

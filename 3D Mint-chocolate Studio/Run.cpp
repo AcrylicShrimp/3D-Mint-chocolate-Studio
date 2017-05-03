@@ -11,13 +11,10 @@
 
 int32_t APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int32_t nShowCmd)
 {
-	D3MCS::MintChocolateStudio::initialize();
+	D3MCS::MintChocolateStudio::initialize(hInstance);
 
 	for (MSG sMsg; GetMessage(&sMsg, nullptr, 0u, 0u);)
 	{
-		if (sMsg.message == WM_QUIT)
-			break;
-
 		TranslateMessage(&sMsg);
 		DispatchMessage(&sMsg);
 	}

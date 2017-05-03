@@ -8,32 +8,63 @@
 
 namespace D3MCS::Render
 {
-	VideoBuffer::VideoBuffer()
+	ArrayBuffer::ArrayBuffer()
 	{
 		glGenBuffers(1u, &this->nBufferID);
 	}
-	
-	VideoBuffer::VideoBuffer(VideoBuffer &&sSrc) :
+
+	ArrayBuffer::ArrayBuffer(ArrayBuffer &&sSrc) :
 		nBufferID{sSrc.nBufferID}
 	{
-		sSrc.nBufferID = VideoBuffer::ZeroID;
+		sSrc.nBufferID = ArrayBuffer::ZeroID;
 	}
-	
-	VideoBuffer::~VideoBuffer()
+
+	ArrayBuffer::~ArrayBuffer()
 	{
-		glDeleteBuffers(1u, &this->nBufferID);
+		if (this->nBufferID)
+			glDeleteBuffers(1u, &this->nBufferID);
 	}
-	
-	VideoBuffer &VideoBuffer::operator=(VideoBuffer &&sSrc)
+
+	ArrayBuffer &ArrayBuffer::operator=(ArrayBuffer &&sSrc)
 	{
-		if(&sSrc == this)
+		if (&sSrc == this)
 			return *this;
-		
-		this->~VideoBuffer();
+
+		this->~ArrayBuffer();
 
 		this->nBufferID = sSrc.nBufferID;
-		sSrc.nBufferID = VideoBuffer::ZeroID;
-		
+		sSrc.nBufferID = ArrayBuffer::ZeroID;
+
+		return *this;
+	}
+
+	ElementBuffer::ElementBuffer()
+	{
+		glGenBuffers(1u, &this->nBufferID);
+	}
+
+	ElementBuffer::ElementBuffer(ElementBuffer &&sSrc) :
+		nBufferID{sSrc.nBufferID}
+	{
+		sSrc.nBufferID = ElementBuffer::ZeroID;
+	}
+
+	ElementBuffer::~ElementBuffer()
+	{
+		if (this->nBufferID)
+			glDeleteBuffers(1u, &this->nBufferID);
+	}
+
+	ElementBuffer &ElementBuffer::operator=(ElementBuffer &&sSrc)
+	{
+		if (&sSrc == this)
+			return *this;
+
+		this->~ElementBuffer();
+
+		this->nBufferID = sSrc.nBufferID;
+		sSrc.nBufferID = ElementBuffer::ZeroID;
+
 		return *this;
 	}
 }

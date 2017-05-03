@@ -8,6 +8,8 @@
 
 #define _CLASS_D3MCS_MINT_CHOCOLATE_STUDIO_H
 
+#include "resource.h"
+
 #include "Frame.h"
 #include "FrameManager.h"
 #include "GlyphManager.h"
@@ -16,6 +18,9 @@
 #include "RenderManager.h"
 #include "WindowMessageProcedure.h"
 
+#include <cstdio>
+#include <cstring>
+#include <string>
 #include <Windows.h>
 #include <GL\glew.h>
 
@@ -34,8 +39,14 @@ namespace D3MCS
 		MintChocolateStudio &operator=(MintChocolateStudio &&sSrc) = delete;
 		
 	public:
-		static void initialize();
+		static void initialize(HINSTANCE hInstance);
 		static void finalize();
+
+	private:
+		static bool checkVersion();
+		static bool checkExtensions();
+		static void createFrame(HINSTANCE hInstance);
+		static void destroyFrame();
 	};
 }
 

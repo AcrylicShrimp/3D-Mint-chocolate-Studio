@@ -10,6 +10,12 @@
     <Filter Include="D3MCS\Render">
       <UniqueIdentifier>{00f7c0a0-b86a-42e4-99a8-6910d19314a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3MCS\Res">
+      <UniqueIdentifier>{bed1a4c6-5f57-4f8d-bb5f-60b29f6822ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3MCS\Utility">
+      <UniqueIdentifier>{a28917dd-9642-459c-b5da-adbf0a420d16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Run.cpp" />
@@ -50,6 +56,9 @@
       <Filter>D3MCS\Render</Filter>
     </ClCompile>
     <ClCompile Include="VideoBuffer.cpp">
+      <Filter>D3MCS\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderInput.cpp">
       <Filter>D3MCS\Render</Filter>
     </ClCompile>
   </ItemGroup>
@@ -102,5 +111,27 @@
     <ClInclude Include="VideoBuffer.h">
       <Filter>D3MCS\Render</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>D3MCS\Res</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>D3MCS\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.hpp">
+      <Filter>D3MCS\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderInput.h">
+      <Filter>D3MCS\Render</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="3D Mint-chocolate Studio.rc">
+      <Filter>D3MCS\Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico">
+      <Filter>D3MCS\Res</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Mid Output\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Dependency\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependency\Include\;C:\Program Files (x86)\Windows Kits\8.1\Include\um\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependency\Library\;$(LibraryPath)</LibraryPath>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -80,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Mid Output\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Dependency\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependency\Include\;C:\Program Files (x86)\Windows Kits\8.1\Include\um\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependency\Library\;$(LibraryPath)</LibraryPath>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -148,6 +148,7 @@
     <ClCompile Include="OpenGLManager.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Run.cpp" />
+    <ClCompile Include="ShaderInput.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
@@ -156,6 +157,8 @@
     <ClCompile Include="WindowMessageProcedure.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Container.hpp" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GlyphManager.h" />
@@ -165,6 +168,8 @@
     <ClInclude Include="MintChocolateStudio.h" />
     <ClInclude Include="OpenGLManager.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ShaderInput.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIElement.h" />
@@ -172,6 +177,12 @@
     <ClInclude Include="UIManager.hpp" />
     <ClInclude Include="VideoBuffer.h" />
     <ClInclude Include="WindowMessageProcedure.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="3D Mint-chocolate Studio.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

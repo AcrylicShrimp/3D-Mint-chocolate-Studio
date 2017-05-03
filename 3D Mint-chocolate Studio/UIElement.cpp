@@ -176,7 +176,7 @@ namespace D3MCS::UI
 
 	uint32_t UIElement::calcChildIndex()
 	{
-
+		return 0u;
 	}
 
 	void UIElement::render()
