@@ -63,8 +63,8 @@ namespace D3MCS::UI
 		static constexpr Font NullFont = nullptr;
 		
 	private:
-		Utility::Container<Render::ArrayBuffer> sPositionBuffer;
-		Utility::Container<Render::ArrayBuffer> sTexCoordBuffer;
+		Utility::Container<Render::VideoBuffer> sPositionBuffer;
+		Utility::Container<Render::VideoBuffer> sTexCoordBuffer;
 		FT_Library sFreetypeLibrary;
 		std::unordered_map<std::string, std::unordered_map<int32_t, std::pair<int32_t, GlyphState>>> sGlyphMap;
 		

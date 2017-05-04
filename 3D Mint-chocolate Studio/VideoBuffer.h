@@ -28,7 +28,7 @@ namespace D3MCS::Render
 		StreamCopy = GL_STREAM_COPY
 	};
 
-	class ArrayBuffer final
+	class VideoBuffer final
 	{
 	public:
 		static constexpr GLuint ZeroID{0u};
@@ -37,14 +37,14 @@ namespace D3MCS::Render
 		GLuint nBufferID;
 
 	public:
-		ArrayBuffer();
-		ArrayBuffer(const ArrayBuffer &sSrc) = delete;
-		ArrayBuffer(ArrayBuffer &&sSrc);
-		~ArrayBuffer();
+		VideoBuffer();
+		VideoBuffer(const VideoBuffer &sSrc) = delete;
+		VideoBuffer(VideoBuffer &&sSrc);
+		~VideoBuffer();
 
 	public:
-		ArrayBuffer &operator=(const ArrayBuffer &sSrc) = delete;
-		ArrayBuffer &operator=(ArrayBuffer &&sSrc);
+		VideoBuffer &operator=(const VideoBuffer &sSrc) = delete;
+		VideoBuffer &operator=(VideoBuffer &&sSrc);
 
 	public:
 		inline operator GLuint() const;
@@ -54,58 +54,17 @@ namespace D3MCS::Render
 		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const;
 	};
 
-	inline ArrayBuffer::operator GLuint() const
+	inline VideoBuffer::operator GLuint() const
 	{
 		return this->nBufferID;
 	}
 
-	inline GLuint ArrayBuffer::bufferID() const
+	inline GLuint VideoBuffer::bufferID() const
 	{
 		return this->nBufferID;
 	}
 
-	inline void ArrayBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
-	{
-		glNamedBufferData(this->nBufferID, nLength, pData, static_cast<GLenum>(eBufferUsage));
-	}
-
-	class ElementBuffer final
-	{
-	public:
-		static constexpr GLuint ZeroID{0u};
-
-	private:
-		GLuint nBufferID;
-
-	public:
-		ElementBuffer();
-		ElementBuffer(const ElementBuffer &sSrc) = delete;
-		ElementBuffer(ElementBuffer &&sSrc);
-		~ElementBuffer();
-
-	public:
-		ElementBuffer &operator=(const ElementBuffer &sSrc) = delete;
-		ElementBuffer &operator=(ElementBuffer &&sSrc);
-
-	public:
-		inline operator GLuint() const;
-
-	public:
-		inline GLuint bufferID() const;
-		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const;
-	};
-
-	inline ElementBuffer::operator GLuint() const
-	{
-		return this->nBufferID;
-	}
-
-	inline GLuint ElementBuffer::bufferID() const
-	{
-		return this->nBufferID;
-	}
-
-	inline void ElementBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
+	inline void VideoBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
 	{
 		glNamedBufferData(this->nBufferID, nLength, pData, static_cast<GLenum>(eBufferUsage));
 	}

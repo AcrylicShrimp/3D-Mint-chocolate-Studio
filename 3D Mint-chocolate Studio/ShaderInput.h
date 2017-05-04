@@ -68,8 +68,8 @@ namespace D3MCS::Render
 		inline void specifyFormatAsDouble(GLuint nIndex, GLint nCount, GLuint nRelativeOffset) const;
 		inline void specifyFormatAsInteger(GLuint nIndex, GLint nCount, IntegerElementType eIntegerElementType, GLuint nRelativeOffset) const;
 		inline void specifyFormatAsFloat(GLuint nIndex, GLint nCount, FloatElementType eFloatElementType, GLboolean nNormalized, GLuint nRelativeOffset) const;
-		inline void attachBuffer(const ArrayBuffer &sArrayBuffer) const;
-		inline void attachBuffer(GLuint nIndex, const ElementBuffer &sElementBuffer, GLintptr nOffset = 0, GLsizei nStride = 0) const;
+		inline void attachBuffer(const VideoBuffer &sVideoBuffer) const;
+		inline void attachBuffer(GLuint nIndex, const VideoBuffer &sVideoBuffer, GLintptr nOffset = 0, GLsizei nStride = 0) const;
 	};
 
 	inline ShaderInput::operator GLuint() const
@@ -92,14 +92,14 @@ namespace D3MCS::Render
 		glVertexArrayAttribFormat(this->nInputID, nIndex, nCount, static_cast<GLenum>(eFloatElementType), nNormalized, nRelativeOffset);
 	}
 
-	inline void ShaderInput::attachBuffer(const ArrayBuffer &sArrayBuffer) const
+	inline void ShaderInput::attachBuffer(const VideoBuffer &sVideoBuffer) const
 	{
-		glVertexArrayElementBuffer(this->nInputID, sArrayBuffer);
+		glVertexArrayElementBuffer(this->nInputID, sVideoBuffer);
 	}
 
-	inline void ShaderInput::attachBuffer(GLuint nIndex, const ElementBuffer &sElementBuffer, GLintptr nOffset, GLsizei nStride) const
+	inline void ShaderInput::attachBuffer(GLuint nIndex, const VideoBuffer &sVideoBuffer, GLintptr nOffset, GLsizei nStride) const
 	{
-		glVertexArrayVertexBuffer(this->nInputID, nIndex, sElementBuffer, nOffset, nStride);
+		glVertexArrayVertexBuffer(this->nInputID, nIndex, sVideoBuffer, nOffset, nStride);
 	}
 }
 

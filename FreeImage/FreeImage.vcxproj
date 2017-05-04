@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{8BD17558-426D-4F38-A711-624F91CC1FCD}</ProjectGuid>
+    <RootNamespace>FreeImage</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\3D Mint-chocolate Studio\Default.props" />
+    <Import Project="..\3D Mint-chocolate Studio\Library.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\3D Mint-chocolate Studio\Default.props" />
+    <Import Project="..\3D Mint-chocolate Studio\Library.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\3D Mint-chocolate Studio\Default.props" />
+    <Import Project="..\3D Mint-chocolate Studio\Library.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\3D Mint-chocolate Studio\Default.props" />
+    <Import Project="..\3D Mint-chocolate Studio\Library.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OPJ_STATIC;FREEIMAGE_EXPORTS;_CRT_SECURE_NO_DEPRECATE;LIBRAW_NODLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)ZLib\;$(SolutionDir)OpenEXR\;$(SolutionDir)OpenEXR\Half\;$(SolutionDir)OpenEXR\Iex\;$(SolutionDir)OpenEXR\IexMath\;$(SolutionDir)OpenEXR\IlmImf\;$(SolutionDir)OpenEXR\IlmThread\;$(SolutionDir)OpenEXR\Imath\;$(SolutionDir)LibJXR\image\sys\;$(SolutionDir)LibJXR\jxrgluelib\;$(SolutionDir)\Dependency\Source\DeprecationManager\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>LibJPEG.lib;LibJXR.lib;LibOpenJPEG.lib;LibPNG.lib;LibRaw.lib;LibTIFF4.lib;LibWebP.lib;OpenEXR.lib;ZLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OPJ_STATIC;FREEIMAGE_EXPORTS;_CRT_SECURE_NO_DEPRECATE;LIBRAW_NODLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir);$(SolutionDir)ZLib\;$(SolutionDir)OpenEXR\;$(SolutionDir)OpenEXR\Half\;$(SolutionDir)OpenEXR\Iex\;$(SolutionDir)OpenEXR\IexMath\;$(SolutionDir)OpenEXR\IlmImf\;$(SolutionDir)OpenEXR\IlmThread\;$(SolutionDir)OpenEXR\Imath\;$(SolutionDir)LibJXR\image\sys\;$(SolutionDir)LibJXR\jxrgluelib\;$(SolutionDir)\Dependency\Source\DeprecationManager\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>LibJPEG.lib;LibJXR.lib;LibOpenJPEG.lib;LibPNG.lib;LibRaw.lib;LibTIFF4.lib;LibWebP.lib;OpenEXR.lib;ZLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Dependency\Source\DeprecationManager\DeprecationMgr.h" />
+    <ClInclude Include="..\Dependency\Source\FreeImageToolkit\Resize.h" />
+    <ClInclude Include="..\Dependency\Source\FreeImage\J2KHelper.h" />
+    <ClInclude Include="..\Dependency\Source\FreeImage\PSDParser.h" />
+    <ClInclude Include="..\Dependency\Source\Metadata\FIRational.h" />
+    <ClInclude Include="..\Dependency\Source\Metadata\FreeImageTag.h" />
+    <ClInclude Include="CacheFile.h" />
+    <ClInclude Include="FreeImage.h" />
+    <ClInclude Include="FreeImageIO.h" />
+    <ClInclude Include="MapIntrospector.h" />
+    <ClInclude Include="Plugin.h" />
+    <ClInclude Include="Quantizers.h" />
+    <ClInclude Include="ToneMapping.h" />
+    <ClInclude Include="Utilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Dependency\Source\DeprecationManager\Deprecated.cpp" />
+    <ClCompile Include="..\Dependency\Source\DeprecationManager\DeprecationMgr.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Background.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\BSplineRotate.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Channels.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\ClassicRotate.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Colors.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\CopyPaste.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Display.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Flip.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\JPEGTransform.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\MultigridPoissonSolver.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Rescale.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImageToolkit\Resize.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\BitmapAccess.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\CacheFile.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ColorLookup.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion16_555.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion16_565.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion24.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion32.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion4.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Conversion8.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionFloat.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionRGB16.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionRGBA16.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionRGBAF.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionRGBF.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionType.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ConversionUINT16.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\FreeImage.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\FreeImageC.c" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\FreeImageIO.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\GetType.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Halftoning.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\J2KHelper.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\LFPQuantizer.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\MemoryIO.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\MNGHelper.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\MultiPage.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\NNQuantizer.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PixelAccess.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\Plugin.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginBMP.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginCUT.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginDDS.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginEXR.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginG3.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginGIF.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginHDR.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginICO.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginIFF.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginJ2K.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginJNG.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginJP2.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginJPEG.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginJXR.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginKOALA.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginMNG.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPCD.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPCX.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPFM.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPICT.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPNG.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPNM.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginPSD.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginRAS.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginRAW.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginSGI.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginTARGA.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginTIFF.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginWBMP.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginWebP.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginXBM.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PluginXPM.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\PSDParser.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\TIFFLogLuv.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\tmoColorConvert.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\tmoDrago03.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\tmoFattal02.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\tmoReinhard05.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ToneMapping.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\WuQuantizer.cpp" />
+    <ClCompile Include="..\Dependency\Source\FreeImage\ZLibInterface.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\Exif.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\FIRational.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\FreeImageTag.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\IPTC.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\TagConversion.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\TagLib.cpp" />
+    <ClCompile Include="..\Dependency\Source\Metadata\XTIFF.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FreeImage.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

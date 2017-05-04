@@ -8,21 +8,24 @@
 
 namespace D3MCS::Render
 {
-	Shader::Shader()
+	Shader::Shader() :
+		nProgramID{Shader::ZeroID}
 	{
-		//TODO : Place your implementation of default constructor here.
-		
+		//Empty.
 	}
 	
-	Shader::Shader(Shader &&sSrc)
+	Shader::Shader(Shader &&sSrc) :
+		nProgramID{sSrc.nProgramID}
 	{
-		//TODO : Place your implementation of move constructor here.
-		
+		sSrc.nProgramID = Shader::ZeroID;
 	}
 	
 	Shader::~Shader()
 	{
+		if (this->nProgramID != Shader::ZeroID)
+			glDeleteProgram(this->nProgramID);
 
+		this->nProgramID = Shader::ZeroID;
 	}
 	
 	Shader &Shader::operator=(Shader &&sSrc)
