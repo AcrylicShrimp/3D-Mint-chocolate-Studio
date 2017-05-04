@@ -59,7 +59,8 @@ namespace D3MCS
 		auto &sOpenGLManager{Render::OpenGLManager::instance()};
 
 		return sOpenGLManager.supportExtension("GL_ARB_direct_state_access"s) &&
-			sOpenGLManager.supportExtension("GL_ARB_bindless_texture"s);
+			sOpenGLManager.supportExtension("GL_ARB_bindless_texture"s) &&
+			sOpenGLManager.supportExtension("GL_EXT_texture_filter_anisotropic"s);
 	}
 
 	void MintChocolateStudio::createFrame(HINSTANCE hInstance)

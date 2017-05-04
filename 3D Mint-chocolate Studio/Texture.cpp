@@ -11,18 +11,24 @@ namespace D3MCS::Render
 	Texture::Texture()
 	{
 		glGenTextures(1u, &this->nTextureID);
+		this->nTextureHandle = glGetTextureHandleARB(this->nTextureID);
 	}
 
 	Texture::Texture(Texture &&sSrc) :
-		nTextureID{sSrc.nTextureID}
+		nTextureID{sSrc.nTextureID},
+		nTextureHandle{sSrc.nTextureHandle}
 	{
 		sSrc.nTextureID = Texture::ZeroID;
+		sSrc.nTextureHandle = Texture::ZeroHandle;
 	}
 
 	Texture::~Texture()
 	{
-		if (this->nTextureID)
+		if (this->nTextureID != Texture::ZeroID)
 			glDeleteTextures(1u, &this->nTextureID);
+		
+		this->nTextureID = Texture::ZeroID;
+		this->nTextureHandle = Texture::ZeroHandle;
 	}
 
 	Texture &Texture::operator=(Texture &&sSrc)

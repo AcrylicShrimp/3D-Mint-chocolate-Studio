@@ -51,7 +51,7 @@ namespace D3MCS::Render
 
 	public:
 		inline GLuint bufferID() const;
-		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData);
+		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const;
 	};
 
 	inline ArrayBuffer::operator GLuint() const
@@ -64,7 +64,7 @@ namespace D3MCS::Render
 		return this->nBufferID;
 	}
 
-	inline void ArrayBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData)
+	inline void ArrayBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
 	{
 		glNamedBufferData(this->nBufferID, nLength, pData, static_cast<GLenum>(eBufferUsage));
 	}
@@ -92,7 +92,7 @@ namespace D3MCS::Render
 
 	public:
 		inline GLuint bufferID() const;
-		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData);
+		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const;
 	};
 
 	inline ElementBuffer::operator GLuint() const
@@ -105,7 +105,7 @@ namespace D3MCS::Render
 		return this->nBufferID;
 	}
 
-	inline void ElementBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData)
+	inline void ElementBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
 	{
 		glNamedBufferData(this->nBufferID, nLength, pData, static_cast<GLenum>(eBufferUsage));
 	}

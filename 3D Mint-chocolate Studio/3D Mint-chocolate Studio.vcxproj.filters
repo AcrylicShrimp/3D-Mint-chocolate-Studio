@@ -61,6 +61,9 @@
     <ClCompile Include="ShaderInput.cpp">
       <Filter>D3MCS\Render</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>D3MCS\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
@@ -121,6 +124,9 @@
       <Filter>D3MCS\Utility</Filter>
     </ClInclude>
     <ClInclude Include="ShaderInput.h">
+      <Filter>D3MCS\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
       <Filter>D3MCS\Render</Filter>
     </ClInclude>
   </ItemGroup>

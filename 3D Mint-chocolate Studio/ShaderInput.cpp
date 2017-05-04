@@ -10,62 +10,33 @@ namespace D3MCS::Render
 {
 	ShaderInput::ShaderInput()
 	{
-		//TODO : Place your implementation of default constructor here.
+		glGenVertexArrays(1u, &this->nInputID);
+	}
 
-	}
-	
-	ShaderInput::ShaderInput(const ShaderInput &sSrc)
+	ShaderInput::ShaderInput(ShaderInput &&sSrc) :
+		nInputID{sSrc.nInputID}
 	{
-		//TODO : Place your implementation of copy constructor here.
-		
-	}
-	
-	ShaderInput::ShaderInput(ShaderInput &&sSrc)
-	{
-		//TODO : Place your implementation of move constructor here.
-		
+		sSrc.nInputID = ShaderInput::ZeroID;
 	}
 	
 	ShaderInput::~ShaderInput()
 	{
-		//TODO : Place your implementation of destructor here.
-		
+		if (this->nInputID != ShaderInput::ZeroID)
+			glDeleteVertexArrays(1u, &this->nInputID);
+
+		this->nInputID = ShaderInput::ZeroID;
 	}
-	
-	/*
-		TODO : Place your other constructors here.
-	*/
-	
-	
-	ShaderInput &ShaderInput::operator=(const ShaderInput &sSrc)
-	{
-		if(&sSrc == this)
-			return *this;
-		
-		//TODO : Place your implementation of copy assignment operator here.
-		
-		
-		return *this;
-	}
-	
+
 	ShaderInput &ShaderInput::operator=(ShaderInput &&sSrc)
 	{
 		if(&sSrc == this)
 			return *this;
 		
-		//TODO : Place your implementation of move assignment operator here.
-		
+		this->~ShaderInput();
+
+		this->nInputID = sSrc.nInputID;
+		sSrc.nInputID = ShaderInput::ZeroID;
 		
 		return *this;
 	}
-	
-	/*
-		TODO : Place your other operator overloadings here.
-	*/
-	
-	
-	/*
-		TODO : Place your member function definitions here.
-	*/
-
 }

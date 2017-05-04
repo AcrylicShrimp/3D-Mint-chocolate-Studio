@@ -10,10 +10,6 @@
 
 #include "OpenGLManager.h"
 
-#include <algorithm>
-#include <cmath>
-#include <cstdint>
-#include <utility>
 #include <GL\glew.h>
 
 namespace D3MCS::Render
@@ -179,9 +175,11 @@ namespace D3MCS::Render
 	{
 	public:
 		static constexpr GLuint ZeroID{0u};
+		static constexpr GLuint64 ZeroHandle{0ui64};
 
 	private:
 		GLuint nTextureID;
+		GLuint64 nTextureHandle;
 		
 	public:
 		Texture();
@@ -197,8 +195,8 @@ namespace D3MCS::Render
 		inline operator GLuint() const;
 		
 	public:
-		inline static void activeTextureSlot(GLenum nSlotID);
 		inline GLuint textureID() const;
+		inline GLuint64 textureHandle() const;
 		inline void setMagFilteringMode(TexelFilter eTexelFilter) const;
 		inline void setSWrappingMode(WrappingMode eWrappingMode) const;
 		inline void setTWrappingMode(WrappingMode eWrappingMode) const;
@@ -206,7 +204,7 @@ namespace D3MCS::Render
 		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const;
 		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
 		inline void updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
-		inline void updateMipmap();
+		inline void updateMipmap() const;
 
 		void setMinFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const;
 	};
@@ -216,14 +214,14 @@ namespace D3MCS::Render
 		return this->nTextureID;
 	}
 
-	inline void Texture::activeTextureSlot(GLenum nSlotID)
-	{
-		glActiveTexture(GL_TEXTURE0 + nSlotID);
-	}
-
 	inline GLuint Texture::textureID() const
 	{
 		return this->nTextureID;
+	}
+
+	inline GLuint64 Texture::textureHandle() const
+	{
+		return this->nTextureHandle;
 	}
 
 	inline void Texture::setMagFilteringMode(TexelFilter eTexelFilter) const
@@ -261,7 +259,7 @@ namespace D3MCS::Render
 		glTextureSubImage2D(this->nTextureID, 0, nX, nY, nWidth, nHeight, static_cast<GLenum>(eExternalFormat), static_cast<GLenum>(eTexelType), pTexel);
 	}
 
-	inline void Texture::updateMipmap()
+	inline void Texture::updateMipmap() const
 	{
 		glGenerateTextureMipmap(this->nTextureID);
 	}

@@ -148,6 +148,7 @@
     <ClCompile Include="OpenGLManager.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Run.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderInput.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="UIButton.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="OpenGLManager.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderInput.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="UIButton.h" />

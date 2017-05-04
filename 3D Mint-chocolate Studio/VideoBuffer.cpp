@@ -21,8 +21,10 @@ namespace D3MCS::Render
 
 	ArrayBuffer::~ArrayBuffer()
 	{
-		if (this->nBufferID)
+		if (this->nBufferID != ArrayBuffer::ZeroID)
 			glDeleteBuffers(1u, &this->nBufferID);
+
+		this->nBufferID = ArrayBuffer::ZeroID;
 	}
 
 	ArrayBuffer &ArrayBuffer::operator=(ArrayBuffer &&sSrc)
@@ -51,8 +53,10 @@ namespace D3MCS::Render
 
 	ElementBuffer::~ElementBuffer()
 	{
-		if (this->nBufferID)
+		if (this->nBufferID != ElementBuffer::ZeroID)
 			glDeleteBuffers(1u, &this->nBufferID);
+
+		this->nBufferID = ElementBuffer::ZeroID;
 	}
 
 	ElementBuffer &ElementBuffer::operator=(ElementBuffer &&sSrc)
