@@ -71,6 +71,9 @@ namespace D3MCS::UI
 
 	void GlyphManager::unloadFont(Font sFont)
 	{
+		if (sFont == GlyphManager::NullFont)
+			return;
+
 		this->unbakeFont(sFont);
 
 		for (auto iIndex{this->sFontMap.cbegin()}, iEnd{this->sFontMap.cend()}; iIndex != iEnd; ++iIndex)
@@ -107,6 +110,9 @@ namespace D3MCS::UI
 
 	void GlyphManager::unbakeFont(Font sFont)
 	{
+		if (sFont == GlyphManager::NullFont)
+			return;
+
 		this->sGlyphMap.erase(sFont);
 	}
 
@@ -120,6 +126,9 @@ namespace D3MCS::UI
 
 	void GlyphManager::bakeString(Font sFont, uint32_t nFontSize, char32_t nCharacter)
 	{
+		if (sFont == GlyphManager::NullFont)
+			return;
+
 		auto &sGlyphLookupMap = this->sGlyphMap[sFont];
 		auto iIndex = sGlyphLookupMap.find(nFontSize);
 
@@ -137,6 +146,9 @@ namespace D3MCS::UI
 
 	void GlyphManager::bakeString(Font sFont, uint32_t nFontSize, const char32_t *pString)
 	{
+		if (sFont == GlyphManager::NullFont)
+			return;
+
 		auto &sGlyphLookupMap = this->sGlyphMap[sFont];
 		auto iIndex = sGlyphLookupMap.find(nFontSize);
 
@@ -151,6 +163,21 @@ namespace D3MCS::UI
 
 		for (auto *pIndex{pString}; *pIndex != '\0'; ++pIndex)
 			this->bakeCharacter(*pIndex, &iIndex->second);
+	}
+
+	const GlyphState *GlyphManager::findGlyphState(Font sFont, uint32_t nFontSize) const
+	{
+		auto iGlyphLookupIndex{this->sGlyphMap.find(sFont)};
+
+		if (iGlyphLookupIndex == this->sGlyphMap.cend())
+			return nullptr;
+
+		auto iGlyphStateIndex{iGlyphLookupIndex->second.find(nFontSize)};
+
+		if (iGlyphStateIndex == iGlyphLookupIndex->second.cend())
+			return nullptr;
+
+		return &iGlyphStateIndex->second;
 	}
 
 	void GlyphManager::bakeCharacter(char32_t nCharacter, GlyphState *pGlyphState)
@@ -173,15 +200,19 @@ namespace D3MCS::UI
 		{
 			pGlyphState->nLastX = 0u;
 			pGlyphState->nLastY = 0u;
-			pGlyphState->sTextureList.emplace_back();
+			pGlyphState->sTextureList.emplace_back(
+				2048,
+				2048,
+				Render::InternalFormat::R8,
+				1,
+				Render::TexelFilter::Linear,
+				Render::TexelFilter::Linear,
+				Render::MipmapFilter::None,
+				Render::WrappingMode::ClampEdge,
+				Render::WrappingMode::ClampEdge,
+				Render::OpenGLManager::instance().maxAnisotropic());
 
 			auto &sTexture{pGlyphState->sTextureList.back()};
-
-			sTexture.specifyTexel(2048, 2048, Render::InternalFormat::R8);
-			sTexture.setMagFilteringMode(Render::TexelFilter::Linear);
-			sTexture.setMinFilteringMode(Render::TexelFilter::Linear, Render::MipmapFilter::None);
-			sTexture.setSWrappingMode(Render::WrappingMode::ClampEdge);
-			sTexture.setTWrappingMode(Render::WrappingMode::ClampEdge);
 		}
 
 		if (pGlyphState->nLastX + nWidth > 2048u)

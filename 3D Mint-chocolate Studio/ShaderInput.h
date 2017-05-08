@@ -65,16 +65,40 @@ namespace D3MCS::Render
 		inline operator GLuint() const;
 		
 	public:
+		inline void bind() const;
+		inline void enableIndex(GLuint nIndex) const;
+		inline void disableIndex(GLuint nIndex) const;
+		inline void bindIndex(GLuint nIndex, GLuint nBindingIndex) const;
 		inline void specifyFormatAsDouble(GLuint nIndex, GLint nCount, GLuint nRelativeOffset) const;
 		inline void specifyFormatAsInteger(GLuint nIndex, GLint nCount, IntegerElementType eIntegerElementType, GLuint nRelativeOffset) const;
 		inline void specifyFormatAsFloat(GLuint nIndex, GLint nCount, FloatElementType eFloatElementType, GLboolean nNormalized, GLuint nRelativeOffset) const;
 		inline void attachBuffer(const VideoBuffer &sVideoBuffer) const;
-		inline void attachBuffer(GLuint nIndex, const VideoBuffer &sVideoBuffer, GLintptr nOffset = 0, GLsizei nStride = 0) const;
+		inline void attachBuffer(GLuint nBindingIndex, GLuint nDivisor, const VideoBuffer &sVideoBuffer, GLintptr nOffset = 0, GLsizei nStride = 0) const;
 	};
 
 	inline ShaderInput::operator GLuint() const
 	{
 		return this->nInputID;
+	}
+
+	inline void ShaderInput::bind() const
+	{
+		glBindVertexArray(this->nInputID);
+	}
+
+	inline void ShaderInput::enableIndex(GLuint nIndex) const
+	{
+		glEnableVertexArrayAttrib(this->nInputID, nIndex);
+	}
+
+	inline void ShaderInput::disableIndex(GLuint nIndex) const
+	{
+		glDisableVertexArrayAttrib(this->nInputID, nIndex);
+	}
+
+	inline void ShaderInput::bindIndex(GLuint nIndex, GLuint nBindingIndex) const
+	{
+		glVertexArrayAttribBinding(this->nInputID, nIndex, nBindingIndex);
 	}
 
 	inline void ShaderInput::specifyFormatAsDouble(GLuint nIndex, GLint nCount, GLuint nRelativeOffset) const
@@ -97,9 +121,10 @@ namespace D3MCS::Render
 		glVertexArrayElementBuffer(this->nInputID, sVideoBuffer);
 	}
 
-	inline void ShaderInput::attachBuffer(GLuint nIndex, const VideoBuffer &sVideoBuffer, GLintptr nOffset, GLsizei nStride) const
+	inline void ShaderInput::attachBuffer(GLuint nBindingIndex, GLuint nDivisor, const VideoBuffer &sVideoBuffer, GLintptr nOffset, GLsizei nStride) const
 	{
-		glVertexArrayVertexBuffer(this->nInputID, nIndex, sVideoBuffer, nOffset, nStride);
+		glVertexArrayVertexBuffer(this->nInputID, nBindingIndex, sVideoBuffer, nOffset, nStride);
+		glVertexArrayBindingDivisor(this->nInputID, nBindingIndex, nDivisor);
 	}
 }
 

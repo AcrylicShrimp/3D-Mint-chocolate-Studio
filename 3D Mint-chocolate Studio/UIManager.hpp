@@ -27,7 +27,7 @@ namespace D3MCS::UI
 		if (iIndex != this->sUIElementMap.cend())
 			return false;
 
-		this->sUIElementMap.emplace<UIType>(new UIType(std::forward<UIType>(sConstructorParameter)...));
+		this->sUIElementMap.emplace(sName, new UIType(std::forward<ConstructorParameter>(sConstructorParameter)...));
 
 		return true;
 	}

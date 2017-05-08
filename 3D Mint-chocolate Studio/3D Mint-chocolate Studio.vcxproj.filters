@@ -40,9 +40,6 @@
     <ClCompile Include="MintChocolateStudio.cpp">
       <Filter>D3MCS</Filter>
     </ClCompile>
-    <ClCompile Include="UIButton.cpp">
-      <Filter>D3MCS\UI</Filter>
-    </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>D3MCS\UI</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>D3MCS\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="UITextureViewer.cpp">
+      <Filter>D3MCS\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +92,6 @@
     </ClInclude>
     <ClInclude Include="MintChocolateStudio.h">
       <Filter>D3MCS</Filter>
-    </ClInclude>
-    <ClInclude Include="UIButton.h">
-      <Filter>D3MCS\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIManager.h">
       <Filter>D3MCS\UI</Filter>
@@ -128,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>D3MCS\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="UITextureViewer.h">
+      <Filter>D3MCS\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

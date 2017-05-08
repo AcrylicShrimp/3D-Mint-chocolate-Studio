@@ -147,9 +147,9 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderInput.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="UITextureViewer.cpp" />
     <ClCompile Include="VideoBuffer.cpp" />
     <ClCompile Include="WindowMessageProcedure.cpp" />
   </ItemGroup>
@@ -169,10 +169,10 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderInput.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="UIManager.hpp" />
+    <ClInclude Include="UITextureViewer.h" />
     <ClInclude Include="VideoBuffer.h" />
     <ClInclude Include="WindowMessageProcedure.h" />
   </ItemGroup>

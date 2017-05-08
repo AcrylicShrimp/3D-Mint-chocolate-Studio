@@ -180,33 +180,25 @@ namespace D3MCS::Render
 	private:
 		GLuint nTextureID;
 		GLuint64 nTextureHandle;
-		
+
 	public:
-		Texture();
+		Texture(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, GLint nMaxLevel, TexelFilter eTexelMagFilter, TexelFilter eTexelMinFilter, MipmapFilter eMipmapMinFilter, WrappingMode eSWrappingMode, WrappingMode eTWrappingMode, float nAnisotropicMode);
 		Texture(const Texture &sSrc) = delete;
 		Texture(Texture &&sSrc);
 		~Texture();
-		
+
 	public:
 		Texture &operator=(const Texture &sSrc) = delete;
 		Texture &operator=(Texture &&sSrc);
 
 	public:
 		inline operator GLuint() const;
-		
+
 	public:
 		inline GLuint textureID() const;
 		inline GLuint64 textureHandle() const;
-		inline void setMagFilteringMode(TexelFilter eTexelFilter) const;
-		inline void setSWrappingMode(WrappingMode eWrappingMode) const;
-		inline void setTWrappingMode(WrappingMode eWrappingMode) const;
-		inline void setAnisotropicMode(float nAnisotropicMode) const;
-		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const;
-		inline void specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
 		inline void updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
 		inline void updateMipmap() const;
-
-		void setMinFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const;
 	};
 
 	inline Texture::operator GLuint() const
@@ -222,36 +214,6 @@ namespace D3MCS::Render
 	inline GLuint64 Texture::textureHandle() const
 	{
 		return this->nTextureHandle;
-	}
-
-	inline void Texture::setMagFilteringMode(TexelFilter eTexelFilter) const
-	{
-		glTextureParameteri(this->nTextureID, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(eTexelFilter));
-	}
-
-	inline void Texture::setSWrappingMode(WrappingMode eWrappingMode) const
-	{
-		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_S, static_cast<GLint>(eWrappingMode));
-	}
-
-	inline void Texture::setTWrappingMode(WrappingMode eWrappingMode) const
-	{
-		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_T, static_cast<GLint>(eWrappingMode));
-	}
-
-	inline void Texture::setAnisotropicMode(float nAnisotropicMode) const
-	{
-		glTextureParameterf(this->nTextureID, GL_TEXTURE_MAX_ANISOTROPY_EXT, fmin(nAnisotropicMode, OpenGLManager::instance().maxAnisotropic()));
-	}
-
-	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const
-	{
-		glTextureStorage2D(this->nTextureID, 0, static_cast<GLenum>(eInternalFormat), nWidth, nHeight);
-	}
-
-	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const
-	{
-		glTextureImage2DEXT(this->nTextureID, GL_TEXTURE_2D, 0, static_cast<GLint>(eInternalFormat), nWidth, nHeight, 0, static_cast<GLenum>(eExternalFormat), static_cast<GLenum>(eTexelType), pTexel);
 	}
 
 	inline void Texture::updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const

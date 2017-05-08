@@ -176,6 +176,13 @@ namespace D3MCS::UI
 
 	uint32_t UIElement::calcChildIndex()
 	{
+		if (!this->pParent)
+			return 0u;
+
+		for (auto nIndex{0u}, nSize{this->pParent->sChildList.size()}; nIndex < nSize; ++nIndex)
+			if (this->pParent->sChildList[nIndex] == this)
+				return nIndex;
+
 		return 0u;
 	}
 

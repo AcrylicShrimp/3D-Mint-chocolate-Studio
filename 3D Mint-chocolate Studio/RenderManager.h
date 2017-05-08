@@ -11,6 +11,7 @@
 #include "Frame.h"
 #include "FrameManager.h"
 #include "ManagerBase.h"
+#include "UIManager.h"
 #include "WindowMessageProcedure.h"
 
 #include <Windows.h>

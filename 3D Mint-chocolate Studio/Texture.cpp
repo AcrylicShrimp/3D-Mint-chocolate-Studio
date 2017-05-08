@@ -8,9 +8,32 @@
 
 namespace D3MCS::Render
 {
-	Texture::Texture()
+	Texture::Texture(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, GLint nMaxLevel, TexelFilter eTexelMagFilter, TexelFilter eTexelMinFilter, MipmapFilter eMipmapMinFilter, WrappingMode eSWrappingMode, WrappingMode eTWrappingMode, float nAnisotropicMode)
 	{
 		glCreateTextures(GL_TEXTURE_2D, 1u, &this->nTextureID);
+
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_MAX_LEVEL, nMaxLevel);
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_MAG_FILTER, static_cast<GLenum>(eTexelMagFilter));
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_S, static_cast<GLint>(eSWrappingMode));
+		glTextureParameteri(this->nTextureID, GL_TEXTURE_WRAP_T, static_cast<GLint>(eTWrappingMode));
+		glTextureParameterf(this->nTextureID, GL_TEXTURE_MAX_ANISOTROPY_EXT, fmin(nAnisotropicMode, OpenGLManager::instance().maxAnisotropic()));
+
+		switch (eMipmapMinFilter)
+		{
+		case MipmapFilter::None:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(eTexelMinFilter));
+			break;
+		case MipmapFilter::Linear:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelMinFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR);
+			break;
+		case MipmapFilter::Nearest:
+			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelMinFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST);
+			break;
+		default:
+			break;
+		}
+
+		glTextureStorage2D(this->nTextureID, nMaxLevel, static_cast<GLenum>(eInternalFormat), nWidth, nHeight);
 		this->nTextureHandle = glGetTextureHandleARB(this->nTextureID);
 	}
 
@@ -42,23 +65,5 @@ namespace D3MCS::Render
 		sSrc.nTextureID = Texture::ZeroID;
 
 		return *this;
-	}
-
-	void Texture::setMinFilteringMode(TexelFilter eTexelFilter, MipmapFilter eMipmapFilter) const
-	{
-		switch (eMipmapFilter)
-		{
-		case MipmapFilter::None:
-			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(eTexelFilter));
-			return;
-		case MipmapFilter::Linear:
-			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR);
-			return;
-		case MipmapFilter::Nearest:
-			glTextureParameteri(this->nTextureID, GL_TEXTURE_MIN_FILTER, eTexelFilter == TexelFilter::Linear ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST);
-			return;
-		default:
-			return;
-		}
 	}
 }

@@ -16,6 +16,8 @@
 #include "InputManager.h"
 #include "OpenGLManager.h"
 #include "RenderManager.h"
+#include "UIManager.h"
+#include "UITextureViewer.h"
 #include "WindowMessageProcedure.h"
 
 #include <cstdio>

@@ -19,11 +19,11 @@
 namespace D3MCS::Render
 {
 #define INIT_CONTEXT \
-if (OpenGLManager::instance().isContextCreated()) \
+if (::D3MCS::Render::OpenGLManager::instance().isContextCreated()) \
 	this->onContextCreated()
 
 #define FIN_CONTEXT \
-if (OpenGLManager::instance().isContextCreated()) \
+if (::D3MCS::Render::OpenGLManager::instance().isContextCreated()) \
 	this->onContextDestroying();
 
 	class OpenGLContextHandler

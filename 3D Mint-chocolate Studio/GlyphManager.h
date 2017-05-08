@@ -95,6 +95,7 @@ namespace D3MCS::UI
 		void unbakeFont(const std::wstring &sFontPath);
 		void bakeString(Font sFont, uint32_t nFontSize, char32_t nCharacter);
 		void bakeString(Font sFont, uint32_t nFontSize, const char32_t *pString);
+		const GlyphState *findGlyphState(Font sFont, uint32_t nFontSize) const;
 
 	private:
 		void bakeCharacter(char32_t nCharacter, GlyphState *pGlyphState);
