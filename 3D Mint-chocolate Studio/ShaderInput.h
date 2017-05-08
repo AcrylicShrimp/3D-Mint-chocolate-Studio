@@ -43,7 +43,7 @@ namespace D3MCS::Render
 		Double = GL_DOUBLE
 	};
 
-	class ShaderInput
+	class ShaderInput final
 	{
 	public:
 		static constexpr GLuint ZeroID{0u};

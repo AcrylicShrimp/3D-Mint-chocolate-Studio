@@ -10,7 +10,7 @@ namespace D3MCS::Render
 {
 	Texture::Texture()
 	{
-		glGenTextures(1u, &this->nTextureID);
+		glCreateTextures(GL_TEXTURE_2D, 1u, &this->nTextureID);
 		this->nTextureHandle = glGetTextureHandleARB(this->nTextureID);
 	}
 

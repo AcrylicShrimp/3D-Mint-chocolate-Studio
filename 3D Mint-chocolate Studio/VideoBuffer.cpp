@@ -10,7 +10,7 @@ namespace D3MCS::Render
 {
 	VideoBuffer::VideoBuffer()
 	{
-		glGenBuffers(1u, &this->nBufferID);
+		glCreateBuffers(1u, &this->nBufferID);
 	}
 
 	VideoBuffer::VideoBuffer(VideoBuffer &&sSrc) :

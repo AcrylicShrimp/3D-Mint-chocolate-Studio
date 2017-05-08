@@ -246,7 +246,7 @@ namespace D3MCS::Render
 
 	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat) const
 	{
-		glTextureImage2DEXT(this->nTextureID, GL_TEXTURE_2D, 0, static_cast<GLint>(eInternalFormat), nWidth, nHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+		glTextureStorage2D(this->nTextureID, 0, static_cast<GLenum>(eInternalFormat), nWidth, nHeight);
 	}
 
 	inline void Texture::specifyTexel(GLsizei nWidth, GLsizei nHeight, InternalFormat eInternalFormat, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const

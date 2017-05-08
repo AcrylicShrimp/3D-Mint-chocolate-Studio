@@ -75,6 +75,10 @@ namespace D3MCS::Render
 			iIndex = iTemp;
 			sBuffer.clear();
 		}
+
+		//Enable/Disable OpenGL features.
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	void OpenGLManager::onContextDestroying()

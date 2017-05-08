@@ -74,18 +74,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)Mid Output\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Dependency\Include\;C:\Program Files (x86)\Windows Kits\8.1\Include\um\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependency\Library\;$(LibraryPath)</LibraryPath>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)Mid Output\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Dependency\Include\;C:\Program Files (x86)\Windows Kits\8.1\Include\um\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependency\Library\;$(LibraryPath)</LibraryPath>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

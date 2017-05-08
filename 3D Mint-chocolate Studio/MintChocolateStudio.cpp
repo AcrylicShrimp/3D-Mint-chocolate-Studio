@@ -15,6 +15,7 @@ namespace D3MCS
 		UI::InputManager::initialize();
 		Render::OpenGLManager::initialize();
 		UI::RenderManager::initialize();
+		UI::GlyphManager::initialize();
 
 		MintChocolateStudio::createFrame(hInstance);
 
@@ -36,6 +37,11 @@ namespace D3MCS
 
 			return;
 		}
+
+		auto &sGlyphManager{UI::GlyphManager::instance()};
+		auto sFont{sGlyphManager.loadFont(L"Res/Consola.ttf")};
+		
+		sGlyphManager.bakeString(sFont, 256u, U"This is test string.");
 
 		UI::FrameManager::instance().frame().setVisible(true);
 	}
@@ -86,6 +92,7 @@ namespace D3MCS
 	{
 		MintChocolateStudio::destroyFrame();
 
+		UI::GlyphManager::finalize();
 		UI::RenderManager::finalize();
 		Render::OpenGLManager::finalize();
 		UI::InputManager::finalize();

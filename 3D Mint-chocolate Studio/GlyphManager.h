@@ -15,6 +15,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <fstream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -35,38 +36,44 @@ namespace D3MCS::UI
 		uint32_t nHeight;
 		int32_t nBiasX;
 		int32_t nBiasY;
-		int32_t nAdvance;
+		int32_t nAdvanceX;
+		int32_t nAdvanceY;
 		float nFirstX;
 		float nFirstY;
 		float nSecondX;
 		float nSecondY;
 	};
 
+	using GlyphRenderStateLookup = std::unordered_map<char32_t, GlyphRenderState>;
+
 	struct GlyphState
 	{
-		uint8_t *pFontFile;
+	public:
 		FT_Face sFace;
 		uint32_t nFontSize;
 		uint32_t nLastX;
 		uint32_t nLastY;
 		bool bKerning;
 		std::vector<Render::Texture> sTextureList;
-		std::unordered_map<char32_t, GlyphRenderState> sGlyphRenderStateMap;
+		GlyphRenderStateLookup sGlyphRenderStateLookup;
 	};
 
 	using Font = const FT_FaceRec *;
+	using FontMap = std::unordered_map<std::wstring, std::pair<FT_Byte *, FT_Face>>;
+	using GlyphLookupMap = std::unordered_map<uint32_t, GlyphState>;
+	using GlyphMap = std::unordered_map<Font, GlyphLookupMap>;
 
 	class GlyphManager : public ManagerBase<GlyphManager>
 	{
 	public:
 		friend ManagerBase<GlyphManager>;
-		static constexpr Font NullFont = nullptr;
+		static constexpr Font NullFont{nullptr};
+		static constexpr FT_Face NullFace{nullptr};
 		
 	private:
-		Utility::Container<Render::VideoBuffer> sPositionBuffer;
-		Utility::Container<Render::VideoBuffer> sTexCoordBuffer;
 		FT_Library sFreetypeLibrary;
-		std::unordered_map<std::string, std::unordered_map<int32_t, std::pair<int32_t, GlyphState>>> sGlyphMap;
+		FontMap sFontMap;
+		GlyphMap sGlyphMap;
 		
 	private:
 		GlyphManager();
@@ -80,24 +87,17 @@ namespace D3MCS::UI
 		
 	public:
 		Font loadFont(const std::wstring &sFontPath);
-		void unloadFont(Font &sFont, const std::wstring &sFontPath);
+		void unloadFontAll();
+		void unloadFont(Font sFont);
+		void unloadFont(const std::wstring &sFontPath);
 		void unbakeFontAll();
 		void unbakeFont(Font sFont);
+		void unbakeFont(const std::wstring &sFontPath);
 		void bakeString(Font sFont, uint32_t nFontSize, char32_t nCharacter);
-		void bakeString(Font sFont, uint32_t nFontSize, const std::u32string &sString);
-		void generateVertex(Font sFont, uint32_t nFontSize, char32_t nCharacter);
-		void generateVertex(Font sFont, uint32_t nFontSize, const std::u32string &sString);
-		//
+		void bakeString(Font sFont, uint32_t nFontSize, const char32_t *pString);
 
-
-
-		void clearPreparedCharacter();
-		void clearBakedTexture();
-		void rebakePreparedCharacter();
-		void clearPreparedGlyphState(const GlyphState *pGlyphState);
-		const GlyphState *prepareGlyphState(const wchar_t *pFacePath, uint32_t nFontSize);
-		const GlyphState *prepareCharacter(const GlyphState *pGlyphState, char32_t nCharacter);
-		const GlyphState *prepareString(const GlyphState *pGlyphState, const char32_t *pString);
+	private:
+		void bakeCharacter(char32_t nCharacter, GlyphState *pGlyphState);
 	};
 }
 
