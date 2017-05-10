@@ -34,7 +34,9 @@ namespace D3MCS::Render
 		}
 
 		glTextureStorage2D(this->nTextureID, nMaxLevel, static_cast<GLenum>(eInternalFormat), nWidth, nHeight);
+
 		this->nTextureHandle = glGetTextureHandleARB(this->nTextureID);
+		glMakeTextureHandleResidentARB(this->nTextureHandle);
 	}
 
 	Texture::Texture(Texture &&sSrc) :

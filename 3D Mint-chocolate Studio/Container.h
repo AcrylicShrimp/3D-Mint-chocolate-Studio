@@ -72,7 +72,7 @@ namespace D3MCS::Utility
 		if (this->bLoaded)
 			return;
 
-		this->bLoaded = false;
+		this->bLoaded = true;
 		new (this->vLoad) LoadType(std::forward<LoadType>(sConstructorParam)...);
 	}
 

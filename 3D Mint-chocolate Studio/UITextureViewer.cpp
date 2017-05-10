@@ -66,21 +66,23 @@ namespace D3MCS::UI
 	{
 		std::ifstream sVertexInput{L"Res/Shader/uitextureviewer.vs", std::ifstream::binary | std::ifstream::in};
 		std::string sVertexSource{std::ifstream::_Iter{sVertexInput}, std::ifstream::_Iter{}};
+
+		std::ifstream sGeometryInput{L"Res/Shader/uitextureviewer.gs", std::ifstream::binary | std::ifstream::in};
+		std::string sGeometrySource{std::ifstream::_Iter{sGeometryInput}, std::ifstream::_Iter{}};
 		
 		std::ifstream sFragmentInput{L"Res/Shader/uitextureviewer.fs", std::ifstream::binary | std::ifstream::in};
 		std::string sFragmentSource{std::ifstream::_Iter{sFragmentInput}, std::ifstream::_Iter{}};
 
 		this->sShader.init();
 		this->sShader.containedLoad().attachShader(Render::ShaderType::Vertex, sVertexSource.c_str());
+		this->sShader.containedLoad().attachShader(Render::ShaderType::Geometry, sGeometrySource.c_str());
 		this->sShader.containedLoad().attachShader(Render::ShaderType::Fragment, sFragmentSource.c_str());
 		this->sShader.containedLoad().linkShader();
 
 		this->sShaderInput.init();
 		this->sShaderInput.containedLoad().enableIndex(0u);
-		this->sShaderInput.containedLoad().enableIndex(1u);
-		this->sShaderInput.containedLoad().bindIndex(0u, 0u);
-		this->sShaderInput.containedLoad().bindIndex(1u, 1u);
 		this->sShaderInput.containedLoad().specifyFormatAsFloat(0u, 4, Render::FloatElementType::Float, false, 0u);
+		this->sShaderInput.containedLoad().enableIndex(1u);
 		this->sShaderInput.containedLoad().specifyFormatAsFloat(1u, 2, Render::FloatElementType::Float, false, 0u);
 
 		float vVertexData[]
@@ -111,6 +113,8 @@ namespace D3MCS::UI
 		this->sTexCoordBuffer.init();
 		this->sTexCoordBuffer.containedLoad().specifyData(Render::BufferUsage::StaticDraw, sizeof(vTexCoordData), vTexCoordData);
 
+		this->sShaderInput.containedLoad().bindIndex(0u, 0u);
+		this->sShaderInput.containedLoad().bindIndex(1u, 1u);
 		this->sShaderInput.containedLoad().attachBuffer(0u, 0u, this->sVertexBuffer.containedLoad());
 		this->sShaderInput.containedLoad().attachBuffer(1u, 0u, this->sTexCoordBuffer.containedLoad());
 		

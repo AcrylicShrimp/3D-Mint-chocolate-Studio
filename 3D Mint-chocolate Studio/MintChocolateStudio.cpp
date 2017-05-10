@@ -42,9 +42,9 @@ namespace D3MCS
 		}
 
 		auto &sGlyphManager{UI::GlyphManager::instance()};
-		auto sFont{sGlyphManager.loadFont(L"Res/Consola.ttf")};
-		
-		sGlyphManager.bakeString(sFont, 256u, U"This is test string.");
+		auto sFont{sGlyphManager.loadFont(L"Res/koverwatch.ttf")};
+
+		sGlyphManager.bakeString(sFont, 256u, U"ÄÐ¹ä¿À");
 
 		UI::UIManager::instance().findUIElementByName<UI::UITextureViewer>(L"test")->setTexture(&sGlyphManager.findGlyphState(sFont, 256u)->sTextureList.back());
 

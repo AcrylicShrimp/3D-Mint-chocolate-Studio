@@ -255,5 +255,7 @@ namespace D3MCS::UI
 			static_cast<float>(pGlyphState->nLastX + nWidth) / 2048.f,
 			static_cast<float>(pGlyphState->nLastY + nHeight) / 2048.f
 		});
+
+		pGlyphState->nLastX += nWidth + 2u;
 	}
 }
