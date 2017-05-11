@@ -44,9 +44,11 @@ namespace D3MCS
 		auto &sGlyphManager{UI::GlyphManager::instance()};
 		auto sFont{sGlyphManager.loadFont(L"Res/koverwatch.ttf")};
 
-		sGlyphManager.bakeString(sFont, 256u, U"ÄÐ¹ä¿À");
+		sGlyphManager.bakeString(sFont, 1024u, U"ÄÐ¹ä¿À");
 
-		UI::UIManager::instance().findUIElementByName<UI::UITextureViewer>(L"test")->setTexture(&sGlyphManager.findGlyphState(sFont, 256u)->sTextureList.back());
+		auto &sTexture{sGlyphManager.findGlyphState(sFont, 1024u)->sTextureList.back()};
+		UI::UIManager::instance().findUIElementByName<UI::UITextureViewer>(L"test")->setTexture(&sTexture);
+		sTexture.makeActive();
 
 		UI::FrameManager::instance().frame().setVisible(true);
 	}

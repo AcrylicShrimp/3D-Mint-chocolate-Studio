@@ -70,6 +70,10 @@ namespace D3MCS::UI
 		static constexpr Font NullFont{nullptr};
 		static constexpr FT_Face NullFace{nullptr};
 		
+	public:
+		uint32_t nVerticalGap;
+		uint32_t nHorizontalGap;
+
 	private:
 		FT_Library sFreetypeLibrary;
 		FontMap sFontMap;

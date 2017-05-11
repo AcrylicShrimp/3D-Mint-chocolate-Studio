@@ -39,6 +39,10 @@ namespace D3MCS::UI
 			break;
 		case WM_PAINT:
 		{
+			RECT sRegion;
+			GetUpdateRect(hWindow, &sRegion, false);
+			ValidateRect(hWindow, &sRegion);
+
 			this->render();
 		}
 		break;

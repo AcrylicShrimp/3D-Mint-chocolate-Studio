@@ -197,6 +197,8 @@ namespace D3MCS::Render
 	public:
 		inline GLuint textureID() const;
 		inline GLuint64 textureHandle() const;
+		inline void makeActive() const;
+		inline void makeInactive() const;
 		inline void updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const;
 		inline void updateMipmap() const;
 	};
@@ -214,6 +216,16 @@ namespace D3MCS::Render
 	inline GLuint64 Texture::textureHandle() const
 	{
 		return this->nTextureHandle;
+	}
+
+	inline void Texture::makeActive() const
+	{
+		glMakeTextureHandleResidentARB(this->nTextureHandle);
+	}
+
+	inline void Texture::makeInactive() const
+	{
+		glMakeTextureHandleNonResidentARB(this->nTextureHandle);
 	}
 
 	inline void Texture::updateTexel(GLint nX, GLint nY, GLsizei nWidth, GLsizei nHeight, ExternalFormat eExternalFormat, TexelType eTexelType, const GLvoid *pTexel) const

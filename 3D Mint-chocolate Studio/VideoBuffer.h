@@ -51,7 +51,7 @@ namespace D3MCS::Render
 
 	public:
 		inline GLuint bufferID() const;
-		inline void specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const;
+		inline void specifyData(BufferUsage eBufferUsage, GLsizeiptr nLength, const void *pData) const;
 	};
 
 	inline VideoBuffer::operator GLuint() const
@@ -64,7 +64,7 @@ namespace D3MCS::Render
 		return this->nBufferID;
 	}
 
-	inline void VideoBuffer::specifyData(BufferUsage eBufferUsage, GLsizei nLength, const void *pData) const
+	inline void VideoBuffer::specifyData(BufferUsage eBufferUsage, GLsizeiptr nLength, const void *pData) const
 	{
 		glNamedBufferData(this->nBufferID, nLength, pData, static_cast<GLenum>(eBufferUsage));
 	}

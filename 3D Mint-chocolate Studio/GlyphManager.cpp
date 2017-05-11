@@ -8,7 +8,9 @@
 
 namespace D3MCS::UI
 {
-	GlyphManager::GlyphManager()
+	GlyphManager::GlyphManager() :
+		nVerticalGap{2u},
+		nHorizontalGap{2u}
 	{
 		FT_Init_FreeType(&this->sFreetypeLibrary);
 	}
@@ -193,7 +195,7 @@ namespace D3MCS::UI
 		if (pGlyphState->nLastX != 0u && pGlyphState->nLastX + nWidth > 2048u)
 		{
 			pGlyphState->nLastX = 0u;
-			pGlyphState->nLastY += pGlyphState->nFontSize + 1u;
+			pGlyphState->nLastY += pGlyphState->nFontSize + this->nVerticalGap;
 		}
 
 		if (pGlyphState->sTextureList.empty() || pGlyphState->nLastY != 0u && pGlyphState->nLastY + nHeight > 2048u)
@@ -256,6 +258,6 @@ namespace D3MCS::UI
 			static_cast<float>(pGlyphState->nLastY + nHeight) / 2048.f
 		});
 
-		pGlyphState->nLastX += nWidth + 2u;
+		pGlyphState->nLastX += nWidth + this->nHorizontalGap;
 	}
 }
