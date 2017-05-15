@@ -1,14 +1,14 @@
 ===============================================================================
- GLIntercept version 1.34 Log generated on: Thu May 11 10:32:30 2017
+ GLIntercept version 1.34 Log generated on: Mon May 15 13:53:07 2017
  
 ===============================================================================
 
-wglChoosePixelFormat(280115BF,00D4CBBC)=9 
-wglSetPixelFormat(280115BF,9,00D4CBBC)=true 
-wglCreateContext(280115BF)=00010000 
-wglMakeCurrent(280115BF,00010000)=true 
+wglChoosePixelFormat(BF0117B9,0136CC0C)=9 
+wglSetPixelFormat(BF0117B9,9,0136CC0C)=true 
+wglCreateContext(BF0117B9)=00010000 
+wglMakeCurrent(BF0117B9,00010000)=true 
 glGetString(GL_VERSION)="4.5.0 NVIDIA 376.53" 
-glGetIntegerv(GL_NUM_EXTENSIONS,00D4CAD0)
+glGetIntegerv(GL_NUM_EXTENSIONS,0136CB20)
 wglGetProcAddress("glGetStringi")=100260E0 
 glGetStringi(GL_EXTENSIONS,0)="GL_AMD_multi_draw_indirec..." 
 glGetStringi(GL_EXTENSIONS,1)="GL_AMD_seamless_cubemap_p..." 
@@ -2297,8 +2297,8 @@ wglGetProcAddress("glViewportSwizzleNV")=1003B290
 wglGetProcAddress("glAddSwapHintRectWIN")=1003B2C0 
 wglGetProcAddress("wglGetExtensionsStringARB")=1003B2F0 
 wglGetProcAddress("wglGetExtensionsStringEXT")=1003B320 
-wglGetCurrentDC()=280115BF 
-wglGetExtensionsStringARB(280115BF)="WGL_ARB_buffer_region WGL..." 
+wglGetCurrentDC()=BF0117B9 
+wglGetExtensionsStringARB(BF0117B9)="WGL_ARB_buffer_region WGL..." 
 wglGetProcAddress("wglCreateBufferRegionARB")=1003B350 
 wglGetProcAddress("wglDeleteBufferRegionARB")=1003B380 
 wglGetProcAddress("wglRestoreBufferRegionARB")=1003B3B0 
@@ -2331,7 +2331,7 @@ wglGetProcAddress("wglDXUnlockObjectsNV")=1003B800
 wglGetProcAddress("wglDXUnregisterObjectNV")=1003B830 
 wglGetProcAddress("wglCopyImageSubDataNV")=00000000 
 wglGetProcAddress("wglDelayBeforeSwapNV")=1003B860 
-glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT,01691EA4)
+glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT,0164E1CC)
 glGetString(GL_VERSION)="4.5.0 NVIDIA 376.53" 
 glGetString(GL_SHADING_LANGUAGE_VERSION)="4.50 NVIDIA" 
 glGetString(GL_VENDOR)="NVIDIA Corporation" 
@@ -2340,65 +2340,11 @@ glGetString(GL_EXTENSIONS)="GL_AMD_multi_draw_indirec..."
 glClearColor(0.000000,0.000000,0.000000,1.000000)
 glCullFace(GL_BACK)
 glFrontFace(GL_CCW)
+glPointSize(10.000000)
 glEnable(GL_CULL_FACE)
 glEnable(GL_BLEND)
 glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA)
-glCreateProgram()=1 
-glCreateShader(GL_VERTEX_SHADER)=2 
-glShaderSource(2,1,00D4C814,00000000)
-glCompileShader(2)
-glGetShaderiv(2,GL_COMPILE_STATUS,00D4C7E4)
-glAttachShader(1,2)
-glDeleteShader(2)
-glCreateShader(GL_GEOMETRY_SHADER)=3 
-glShaderSource(3,1,00D4C814,00000000)
-glCompileShader(3)
-glGetShaderiv(3,GL_COMPILE_STATUS,00D4C7E4)
-glAttachShader(1,3)
-glDeleteShader(3)
-glCreateShader(GL_FRAGMENT_SHADER)=4 
-glShaderSource(4,1,00D4C814,00000000)
-glCompileShader(4)
-glGetShaderiv(4,GL_COMPILE_STATUS,00D4C7E4)
-glAttachShader(1,4)
-glDeleteShader(4)
-glLinkProgram(1)
-glGetProgramiv(1,GL_LINK_STATUS,00D4C7F8)
-glCreateVertexArrays(1,016960EA)
-glEnableVertexArrayAttrib(1,0)
-glVertexArrayAttribFormat(1,0,4,GL_FLOAT,false,0)
-glEnableVertexArrayAttrib(1,1)
-glVertexArrayAttribFormat(1,1,2,GL_FLOAT,false,0)
-glCreateBuffers(1,016960EF)
-glNamedBufferData(1,96,00D4CA68,GL_STATIC_DRAW)
-glCreateBuffers(1,016960F4)
-glNamedBufferData(2,48,00D4CA30,GL_STATIC_DRAW)
-glVertexArrayAttribBinding(1,0,0)
-glVertexArrayAttribBinding(1,1,1)
-glVertexArrayVertexBuffer(1,0,1,0,0)
-glVertexArrayBindingDivisor(1,0,0)
-glVertexArrayVertexBuffer(1,1,2,0,0)
-glVertexArrayBindingDivisor(1,1,0)
-glCreateTextures(GL_TEXTURE_2D,1,016BE568)
-glTextureParameteri(1,GL_TEXTURE_MAX_LEVEL,1)
-glTextureParameteri(1,GL_TEXTURE_MAG_FILTER,9729)
-glTextureParameteri(1,GL_TEXTURE_WRAP_S,33071)
-glTextureParameteri(1,GL_TEXTURE_WRAP_T,33071)
-glTextureParameterf(1,GL_TEXTURE_MAX_ANISOTROPY_EXT,16.000000)
-glTextureParameteri(1,GL_TEXTURE_MIN_FILTER,9729)
-glTextureStorage2D(1,1,GL_R8,2048,2048)
-glGetTextureHandleARB(1)=4294969856 
-glPixelStorei(GL_UNPACK_ALIGNMENT,1)
-glTextureSubImage2D(1,0,0,0,605,908,GL_RED,GL_UNSIGNED_BYTE,09C14040)
-glPixelStorei(GL_UNPACK_ALIGNMENT,1)
-glTextureSubImage2D(1,0,607,0,650,890,GL_RED,GL_UNSIGNED_BYTE,09C1A040)
-glPixelStorei(GL_UNPACK_ALIGNMENT,1)
-glTextureSubImage2D(1,0,1259,0,646,751,GL_RED,GL_UNSIGNED_BYTE,07246740)
-glGetUniformLocation(1,"uniform_texture")=0 
-glProgramUniformHandleui64ARB(1,0,4294969856)
-glMakeTextureHandleResidentARB(4294969856)
 glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT)
-glUseProgram(1)
-glBindVertexArray(1)
-glDrawArrays(GL_TRIANGLES,0,6) GLSL=1 
-wglSwapBuffers(280115BF)
+wglSwapBuffers(BF0117B9)=true 
+wglMakeCurrent(00000000,00000000)=true 
+wglDeleteContext(00010000)=true 

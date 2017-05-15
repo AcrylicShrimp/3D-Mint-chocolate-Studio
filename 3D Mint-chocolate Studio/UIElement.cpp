@@ -12,7 +12,7 @@ namespace D3MCS::UI
 	UIElement *UIElement::pFocusedElement{nullptr};
 	UIElement UIElement::sRootElement{0, 0, 0u, 0u};
 
-	UIElement::UIElement(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight) :
+	UIElement::UIElement(int32_t nNewX, int32_t nNewY, int32_t nNewWidth, int32_t nNewHeight) :
 		nX{nNewX},
 		nY{nNewY},
 		nWidth{nNewWidth},

@@ -16,6 +16,12 @@
     <Filter Include="D3MCS\Utility">
       <UniqueIdentifier>{a28917dd-9642-459c-b5da-adbf0a420d16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3MCS\UI\Layout">
+      <UniqueIdentifier>{a0936be7-fef7-4262-8e8f-17b4c6de602c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3MCS\UI\UIElements">
+      <UniqueIdentifier>{d93ef6f4-67cd-4f1e-b185-457e2a20b97b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Run.cpp" />
@@ -61,8 +67,17 @@
     <ClCompile Include="Shader.cpp">
       <Filter>D3MCS\Render</Filter>
     </ClCompile>
+    <ClCompile Include="SessionManager.cpp">
+      <Filter>D3MCS</Filter>
+    </ClCompile>
+    <ClCompile Include="LayoutManager.cpp">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClCompile>
     <ClCompile Include="UITextureViewer.cpp">
-      <Filter>D3MCS\UI</Filter>
+      <Filter>D3MCS\UI\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="UILabel.cpp">
+      <Filter>D3MCS\UI\UIElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +141,17 @@
     <ClInclude Include="Shader.h">
       <Filter>D3MCS\Render</Filter>
     </ClInclude>
+    <ClInclude Include="SessionManager.h">
+      <Filter>D3MCS</Filter>
+    </ClInclude>
+    <ClInclude Include="LayoutManager.h">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClInclude>
     <ClInclude Include="UITextureViewer.h">
-      <Filter>D3MCS\UI</Filter>
+      <Filter>D3MCS\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="UILabel.h">
+      <Filter>D3MCS\UI\UIElements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

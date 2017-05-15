@@ -2,8 +2,8 @@
 
 uniform sampler2D uniform_texture;
 
-in vec4 frag_position;
-in vec2 frag_texcoord;
+smooth in vec4 frag_position;
+smooth in vec2 frag_texcoord;
 
 out vec4 frag_output;
 

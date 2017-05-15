@@ -23,15 +23,15 @@ namespace D3MCS::UI
 		static UIElement sRootElement;
 		int32_t nX;
 		int32_t nY;
-		uint32_t nWidth;
-		uint32_t nHeight;
+		int32_t nWidth;
+		int32_t nHeight;
 		bool bHided;
 		bool bEnabled;
 		UIElement *pParent;
 		std::vector<UIElement *> sChildList;
 		
 	public:
-		UIElement(int32_t nNewX, int32_t nNewY, uint32_t nNewWidth, uint32_t nNewHeight);
+		UIElement(int32_t nNewX, int32_t nNewY, int32_t nNewWidth, int32_t nNewHeight);
 		UIElement(const UIElement &sSrc) = delete;
 		UIElement(UIElement &&sSrc);
 		virtual ~UIElement();
@@ -46,10 +46,10 @@ namespace D3MCS::UI
 		inline int32_t &x();
 		inline int32_t y() const;
 		inline int32_t &y();
-		inline uint32_t width() const;
-		inline uint32_t &width();
-		inline uint32_t height() const;
-		inline uint32_t &height();
+		inline int32_t width() const;
+		inline int32_t &width();
+		inline int32_t height() const;
+		inline int32_t &height();
 		inline bool &isHided();
 		inline bool isHided() const;
 		inline bool &isEnabled();
@@ -108,22 +108,22 @@ namespace D3MCS::UI
 		return this->nY;
 	}
 
-	inline uint32_t UIElement::width() const
+	inline int32_t UIElement::width() const
 	{
 		return this->nWidth;
 	}
 
-	inline uint32_t &UIElement::width()
+	inline int32_t &UIElement::width()
 	{
 		return this->nWidth;
 	}
 
-	inline uint32_t UIElement::height() const
+	inline int32_t UIElement::height() const
 	{
 		return this->nHeight;
 	}
 
-	inline uint32_t &UIElement::height()
+	inline int32_t &UIElement::height()
 	{
 		return this->nHeight;
 	}

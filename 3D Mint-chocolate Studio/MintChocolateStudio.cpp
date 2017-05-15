@@ -17,8 +17,7 @@ namespace D3MCS
 		UI::RenderManager::initialize();
 		UI::UIManager::initialize();
 		UI::GlyphManager::initialize();
-
-		UI::UIManager::instance().addUIElementByName<UI::UITextureViewer>(L"test", 0, 0, 0u, 0u);
+		SessionManager::initialize();
 
 		MintChocolateStudio::createFrame(hInstance);
 
@@ -40,15 +39,6 @@ namespace D3MCS
 
 			return;
 		}
-
-		auto &sGlyphManager{UI::GlyphManager::instance()};
-		auto sFont{sGlyphManager.loadFont(L"Res/koverwatch.ttf")};
-
-		sGlyphManager.bakeString(sFont, 1024u, U"ÄÐ¹ä¿À");
-
-		auto &sTexture{sGlyphManager.findGlyphState(sFont, 1024u)->sTextureList.back()};
-		UI::UIManager::instance().findUIElementByName<UI::UITextureViewer>(L"test")->setTexture(&sTexture);
-		sTexture.makeActive();
 
 		UI::FrameManager::instance().frame().setVisible(true);
 	}
@@ -99,6 +89,7 @@ namespace D3MCS
 	{
 		MintChocolateStudio::destroyFrame();
 
+		SessionManager::finalize();
 		UI::GlyphManager::finalize();
 		UI::UIManager::finalize();
 		UI::RenderManager::finalize();
