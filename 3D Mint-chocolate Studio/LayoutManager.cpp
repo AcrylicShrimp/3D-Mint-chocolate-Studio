@@ -8,64 +8,27 @@
 
 namespace D3MCS::UI::Layout
 {
-	LayoutManager::LayoutManager()
+	void LayoutManager::deflateUI()
 	{
-		//TODO : Place your implementation of default constructor here.
-		
+		UIManager::instance().clearUIElement();
 	}
-	
-	LayoutManager::LayoutManager(const LayoutManager &sSrc)
-	{
-		//TODO : Place your implementation of copy constructor here.
-		
-	}
-	
-	LayoutManager::LayoutManager(LayoutManager &&sSrc)
-	{
-		//TODO : Place your implementation of move constructor here.
-		
-	}
-	
-	LayoutManager::~LayoutManager()
-	{
-		//TODO : Place your implementation of destructor here.
-		
-	}
-	
-	/*
-		TODO : Place your other constructors here.
-	*/
-	
-	
-	LayoutManager &LayoutManager::operator=(const LayoutManager &sSrc)
-	{
-		if(&sSrc == this)
-			return *this;
-		
-		//TODO : Place your implementation of copy assignment operator here.
-		
-		
-		return *this;
-	}
-	
-	LayoutManager &LayoutManager::operator=(LayoutManager &&sSrc)
-	{
-		if(&sSrc == this)
-			return *this;
-		
-		//TODO : Place your implementation of move assignment operator here.
-		
-		
-		return *this;
-	}
-	
-	/*
-		TODO : Place your other operator overloadings here.
-	*/
-	
-	
-	/*
-		TODO : Place your member function definitions here.
-	*/
 
+	bool LayoutManager::inflateUI(const std::unordered_multimap<std::wstring, Utility::XML::XMLElement> &sXMLRoot)
+	{
+		this->deflateUI();
+
+		auto iRoot{sXMLRoot.equal_range(L"UI")};
+
+		if (iRoot.first == iRoot.second)
+			return false;
+
+		auto sRoot{iRoot.first->second};
+
+		if (++iRoot.first != iRoot.second)
+			return false;
+
+		//TODO : Place UI Elements here.
+
+		return true;
+	}
 }

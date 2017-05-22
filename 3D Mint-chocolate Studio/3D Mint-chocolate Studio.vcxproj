@@ -41,13 +41,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -155,6 +155,8 @@
     <ClCompile Include="UITextureViewer.cpp" />
     <ClCompile Include="VideoBuffer.cpp" />
     <ClCompile Include="WindowMessageProcedure.cpp" />
+    <ClCompile Include="XMLElement.cpp" />
+    <ClCompile Include="XMLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Container.h" />
@@ -181,6 +183,8 @@
     <ClInclude Include="UITextureViewer.h" />
     <ClInclude Include="VideoBuffer.h" />
     <ClInclude Include="WindowMessageProcedure.h" />
+    <ClInclude Include="XMLElement.h" />
+    <ClInclude Include="XMLParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3D Mint-chocolate Studio.rc" />

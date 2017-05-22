@@ -87,8 +87,8 @@ namespace D3MCS::UI
 		if (!pGlyphState)
 			return;
 
-		float nCurrentX{this->nX};
-		float nCurrentY{this->nY};
+		float nCurrentX{static_cast<float>(this->nX)};
+		float nCurrentY{static_cast<float>(this->nY)};
 		auto iEnd{pGlyphState->sGlyphRenderStateLookup.cend()};
 
 		for (auto nCharacter : this->sContent)
@@ -97,8 +97,6 @@ namespace D3MCS::UI
 
 			if (iIndex == iEnd)
 				continue;
-
-
 		}
 	}
 

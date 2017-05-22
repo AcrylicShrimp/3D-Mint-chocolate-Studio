@@ -22,6 +22,9 @@
     <Filter Include="D3MCS\UI\UIElements">
       <UniqueIdentifier>{d93ef6f4-67cd-4f1e-b185-457e2a20b97b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3MCS\Utility\XML">
+      <UniqueIdentifier>{e44d0da4-e8b4-45b4-af6e-b468ab695956}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Run.cpp" />
@@ -78,6 +81,12 @@
     </ClCompile>
     <ClCompile Include="UILabel.cpp">
       <Filter>D3MCS\UI\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLElement.cpp">
+      <Filter>D3MCS\Utility\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLParser.cpp">
+      <Filter>D3MCS\Utility\XML</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +161,12 @@
     </ClInclude>
     <ClInclude Include="UILabel.h">
       <Filter>D3MCS\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLElement.h">
+      <Filter>D3MCS\Utility\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLParser.h">
+      <Filter>D3MCS\Utility\XML</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

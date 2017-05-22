@@ -14,11 +14,14 @@
 #include "FrameManager.h"
 #include "GlyphManager.h"
 #include "InputManager.h"
+#include "LayoutManager.h"
 #include "OpenGLManager.h"
 #include "RenderManager.h"
 #include "UIManager.h"
 #include "SessionManager.h"
 #include "WindowMessageProcedure.h"
+#include "XMLElement.h"
+#include "XMLParser.h"
 
 #include <cstdio>
 #include <cstring>

@@ -15,8 +15,9 @@ namespace D3MCS
 		UI::InputManager::initialize();
 		Render::OpenGLManager::initialize();
 		UI::RenderManager::initialize();
-		UI::UIManager::initialize();
 		UI::GlyphManager::initialize();
+		UI::UIManager::initialize();
+		UI::Layout::LayoutManager::initialize();
 		SessionManager::initialize();
 
 		MintChocolateStudio::createFrame(hInstance);
@@ -39,6 +40,8 @@ namespace D3MCS
 
 			return;
 		}
+
+		UI::Layout::LayoutManager::instance().inflateUIFromFile(L"Res/Layout/test.xml");
 
 		UI::FrameManager::instance().frame().setVisible(true);
 	}
@@ -90,8 +93,9 @@ namespace D3MCS
 		MintChocolateStudio::destroyFrame();
 
 		SessionManager::finalize();
-		UI::GlyphManager::finalize();
+		UI::Layout::LayoutManager::finalize();
 		UI::UIManager::finalize();
+		UI::GlyphManager::finalize();
 		UI::RenderManager::finalize();
 		Render::OpenGLManager::finalize();
 		UI::InputManager::finalize();
