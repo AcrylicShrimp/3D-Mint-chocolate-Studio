@@ -1,4 +1,4 @@
-GL Intercept Log. Version : 1.34    Compile Date: Aug 23 2016    Run on: Sun May 21 14:37:23 2017
+GL Intercept Log. Version : 1.34    Compile Date: Aug 23 2016    Run on: Thu Jun 15 15:15:56 2017
 
 ===================================================
 FunctionParser::Parse - Unable to open file C:\Program Files (x86)\GLIntercept_1_3_4\GLFunctions\gliIncludes.h
@@ -2204,3 +2204,5 @@ Diagnostic: Unknown function wglDXSetResourceShareHandleNV being logged.
 Diagnostic: Unknown function wglDXUnlockObjectsNV being logged.
 Diagnostic: Unknown function wglDXUnregisterObjectNV being logged.
 Diagnostic: Unknown function wglDelayBeforeSwapNV being logged.
+===================================================
+Log End.

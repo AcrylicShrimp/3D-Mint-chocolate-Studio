@@ -8,6 +8,7 @@
 
 #define _CLASS_D3MCS_UI_LAYOUT_LAYOUT_MANAGER_H
 
+#include "LayoutElementInflater.h"
 #include "ManagerBase.h"
 #include "UIElement.h"
 #include "UIManager.h"
@@ -26,7 +27,7 @@ namespace D3MCS::UI::Layout
 		friend ManagerBase<LayoutManager>;
 
 	private:
-
+		std::unordered_map<std::wstring, const LayoutElementInflater *> sInflaterMap;
 		
 	private:
 		LayoutManager() = default;
@@ -41,6 +42,8 @@ namespace D3MCS::UI::Layout
 	public:
 		inline bool inflateUIFromFile(const wchar_t *pXMLPath);
 		inline bool inflateUIFromContent(const std::wstring &sXMLContent);
+		inline bool addLayoutElementInflater(const LayoutElementInflater *pLayoutElementInflater);
+		inline bool removeLayoutElementInflater(const std::wstring &sLayoutElementInflaterIdentifier);
 
 		void deflateUI();
 
@@ -56,6 +59,21 @@ namespace D3MCS::UI::Layout
 	inline bool LayoutManager::inflateUIFromContent(const std::wstring &sXMLContent)
 	{
 		return this->inflateUI(Utility::XML::XMLParser::parseXMLFromContent(sXMLContent));
+	}
+
+	inline bool LayoutManager::addLayoutElementInflater(const LayoutElementInflater *pLayoutElementInflater)
+	{
+		if (this->sInflaterMap.find(pLayoutElementInflater->identifier()) != this->sInflaterMap.cend())
+			return false;
+
+		this->sInflaterMap.emplace(pLayoutElementInflater->identifier(), pLayoutElementInflater);
+
+		return true;
+	}
+
+	inline bool LayoutManager::removeLayoutElementInflater(const std::wstring &sLayoutElementInflaterIdentifier)
+	{
+		return this->sInflaterMap.erase(sLayoutElementInflaterIdentifier) == 1u;
 	}
 }
 

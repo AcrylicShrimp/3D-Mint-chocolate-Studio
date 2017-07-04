@@ -88,6 +88,12 @@
     <ClCompile Include="XMLParser.cpp">
       <Filter>D3MCS\Utility\XML</Filter>
     </ClCompile>
+    <ClCompile Include="DefaultLayoutInflaterManager.cpp">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="UILabelInflater.cpp">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
@@ -167,6 +173,15 @@
     </ClInclude>
     <ClInclude Include="XMLParser.h">
       <Filter>D3MCS\Utility\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="LayoutElementInflater.h">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultLayoutInflaterManager.h">
+      <Filter>D3MCS\UI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="UILabelInflater.h">
+      <Filter>D3MCS\UI\Layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

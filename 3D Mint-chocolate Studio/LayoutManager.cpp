@@ -27,7 +27,26 @@ namespace D3MCS::UI::Layout
 		if (++iRoot.first != iRoot.second)
 			return false;
 
-		//TODO : Place UI Elements here.
+		auto iEnd = this->sInflaterMap.cend();
+
+		for (const auto &sPair : sXMLRoot)
+		{
+			auto iIndex = this->sInflaterMap.find(sPair.second.name());
+
+			if (iIndex == iEnd)
+			{
+				this->deflateUI();
+
+				return false;
+			}
+
+			if (!iIndex->second->inflateElement(sPair.second))
+			{
+				this->deflateUI();
+
+				return false;
+			}
+		}
 
 		return true;
 	}

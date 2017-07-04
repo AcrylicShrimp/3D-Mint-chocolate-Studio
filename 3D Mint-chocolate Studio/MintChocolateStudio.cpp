@@ -18,6 +18,7 @@ namespace D3MCS
 		UI::GlyphManager::initialize();
 		UI::UIManager::initialize();
 		UI::Layout::LayoutManager::initialize();
+		UI::Layout::DefaultLayoutInflaterManager::initialize();
 		SessionManager::initialize();
 
 		MintChocolateStudio::createFrame(hInstance);
@@ -93,6 +94,7 @@ namespace D3MCS
 		MintChocolateStudio::destroyFrame();
 
 		SessionManager::finalize();
+		UI::Layout::DefaultLayoutInflaterManager::finalize();
 		UI::Layout::LayoutManager::finalize();
 		UI::UIManager::finalize();
 		UI::GlyphManager::finalize();

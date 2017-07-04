@@ -10,6 +10,7 @@
 
 #include "resource.h"
 
+#include "DefaultLayoutInflaterManager.h"
 #include "Frame.h"
 #include "FrameManager.h"
 #include "GlyphManager.h"
@@ -17,8 +18,8 @@
 #include "LayoutManager.h"
 #include "OpenGLManager.h"
 #include "RenderManager.h"
-#include "UIManager.h"
 #include "SessionManager.h"
+#include "UIManager.h"
 #include "WindowMessageProcedure.h"
 #include "XMLElement.h"
 #include "XMLParser.h"
